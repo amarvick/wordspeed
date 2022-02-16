@@ -29,11 +29,10 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
 };
 
 // Consider using this in FullGameBoard
-export const genTilesMap = (tiles: Tile[]): Map<string, Tile> => {
+export const genTilesMap = (tiles: LinkedList): Map<string, Tile> => {
   const newTilesMap = new Map<string, Tile>();
 
-  // TODO - Maybe rename forEach
-  tiles.forEach((tile) => {
+  tiles.loop(tile => {
     newTilesMap[tile.id] = tile;
   });
 

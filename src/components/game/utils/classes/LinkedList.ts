@@ -68,20 +68,6 @@ export default class LinkedList {
     return removedTail.tile;
   }
 
-  // TODO - may not need this, but no need to get rid of just yet
-  search(tile: Tile): ListNode | null {
-    let currentNode = this.head;
-
-    while (currentNode) {
-      if (currentNode.tile === tile) {
-        return currentNode;
-      }
-      currentNode = currentNode.next;
-    }
-
-    return null;
-  }
-
   deleteBulk(tileIds: Set<string>): Tile[] {
     let currentNode = this.head;
     const deletedTiles = [];
@@ -117,7 +103,7 @@ export default class LinkedList {
     return all;
   }
 
-  forEach(func: (tile: Tile) => void): void {
+  loop(func: (tile: Tile) => void): void {
     let currentNode = this.head;
 
     while (currentNode) {

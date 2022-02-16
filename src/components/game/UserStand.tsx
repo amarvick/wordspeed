@@ -14,7 +14,7 @@ import { Tile } from './utils/types/Tile';
 import { LinkedList } from './utils/classes/LinkedList';
 
 type UserStandProps = {
-  tiles: Tile[],
+  tiles: LinkedList,
   acceptWord: (tiles) => LinkedList,
   swapTiles: (tiles) => LinkedList,
   setError: (error: string) => void,
@@ -37,7 +37,7 @@ function UserStand({
     if (word.length < 2) {
       setError(ERR_NEEDS_MORE_CHARS);
     } else if (wordBank.has(word)) {
-      const newTiles = acceptWord(new Set(currWordTiles));
+      const newTiles: LinkedList = acceptWord(new Set(currWordTiles));
       setCurrWordTiles([]);
       setAllTiles(genTilesMap(newTiles));
     } else {
@@ -65,7 +65,7 @@ function UserStand({
 
   const onSwap = (): void => {
     setError('');
-    const newTiles = swapTiles(new Set(currWordTiles));
+    const newTiles: LinkedList = swapTiles(new Set(currWordTiles));
     setAllTiles(genTilesMap(newTiles));
     setCurrWordTiles([]);
   };
