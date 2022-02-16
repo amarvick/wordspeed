@@ -1,0 +1,20 @@
+.tile {
+  padding: 3px;
+  margin: 5px;
+  height: 50px;
+  width: 35px;
+  border-radius: 10px;
+  background-color: rgb(21, 21, 21);
+  color: white;
+  display: inline-block;
+}
+
+.tile-value {
+  font-size: 24px;
+  margin: 0px;
+}
+
+.tile-points {
+  font-size: 12px;
+  margin: 5px;
+}

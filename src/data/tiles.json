@@ -1,0 +1,158 @@
+[
+  {
+    "type": "char",
+    "value": "A",
+    "points": 1,
+    "count": 9
+  },
+  {
+    "type": "char",
+    "value": "B",
+    "points": 3,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "C",
+    "points": 3,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "D",
+    "points": 2,
+    "count": 4
+  },
+  {
+    "type": "char",
+    "value": "E",
+    "points": 1,
+    "count": 12
+  },
+  {
+    "type": "char",
+    "value": "F",
+    "points": 4,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "G",
+    "points": 2,
+    "count": 3
+  },
+  {
+    "type": "char",
+    "value": "H",
+    "points": 4,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "I",
+    "points": 1,
+    "count": 9
+  },
+  {
+    "type": "char",
+    "value": "J",
+    "points": 8,
+    "count": 1
+  },
+  {
+    "type": "char",
+    "value": "K",
+    "points": 5,
+    "count": 1
+  },
+  {
+    "type": "char",
+    "value": "L",
+    "points": 1,
+    "count": 4
+  },
+  {
+    "type": "char",
+    "value": "M",
+    "points": 3,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "N",
+    "points": 1,
+    "count": 6
+  },
+  {
+    "type": "char",
+    "value": "O",
+    "points": 1,
+    "count": 8
+  },
+  {
+    "type": "char",
+    "value": "P",
+    "points": 3,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "Q",
+    "points": 10,
+    "count": 1
+  },
+  {
+    "type": "char",
+    "value": "R",
+    "points": 1,
+    "count": 6
+  },
+  {
+    "type": "char",
+    "value": "S",
+    "points": 1,
+    "count": 4
+  },
+  {
+    "type": "char",
+    "value": "T",
+    "points": 1,
+    "count": 6
+  },
+  {
+    "type": "char",
+    "value": "U",
+    "points": 1,
+    "count": 4
+  },
+  {
+    "type": "char",
+    "value": "V",
+    "points": 4,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "W",
+    "points": 4,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "X",
+    "points": 8,
+    "count": 1
+  },
+  {
+    "type": "char",
+    "value": "Y",
+    "points": 4,
+    "count": 2
+  },
+  {
+    "type": "char",
+    "value": "Z",
+    "points": 10,
+    "count": 1
+  }
+]
