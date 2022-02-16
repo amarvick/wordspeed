@@ -12,7 +12,7 @@ The flipped tiles are represented as a Linked List to make the insertion of swap
 
 The tiles in your deck are initialized as an array, but generate into a map for quicker reference when using a tile for your drafted word.
 
-## Todo
+## To do
 - Fix Score counter
 - Fix bug where entering a word will show the "Cannot be less than 2 characters" error
 - Consider using keyCode instead of key
