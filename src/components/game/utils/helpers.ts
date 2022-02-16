@@ -28,7 +28,7 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
   return [flippedTiles, initializedDeck];
 };
 
-// Consider using this in FullGameBoard
+// TODO - Consider using this in FullGameBoard
 export const genTilesMap = (tiles: LinkedList): Map<string, Tile> => {
   const newTilesMap = new Map<string, Tile>();
 
