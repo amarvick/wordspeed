@@ -15,3 +15,13 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
+
+## Technologies
+- React.js
+- TypeScript
+
+## Design Considerations
+
+The flipped tiles are represented as a Linked List to make the insertion of swapped tiles run significantly faster as opposed to an array which shifts elements over per tile used.
+
+The tiles in your deck are initialized as an array, but generate into a map for quicker reference when using a tile for your drafted words.
