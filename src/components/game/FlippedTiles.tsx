@@ -5,6 +5,7 @@ import TileComponent from './TileComponent.tsx';
 import './FlippedTiles.css';
 // @ts-ignore
 import { LinkedList } from './utils/classes/LinkedList';
+import { Tile } from './utils/types/Tile';
 
 type FlippedTilesProps = {
   tiles: LinkedList
@@ -12,7 +13,7 @@ type FlippedTilesProps = {
 
 const FlippedTiles = ({ tiles }: FlippedTilesProps): JSX.Element => (
   <div className="flipped-tiles">
-    {tiles.map(tile => (
+    {tiles.map((tile: Tile) => (
       <TileComponent
         type={tile.type}
         value={tile.value}

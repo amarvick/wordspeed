@@ -131,7 +131,7 @@ const FullGameBoard = (): JSX.Element => {
     }
   };
 
-  return time ? (
+  return time && (!!flippedTiles.listSize || !!deckTiles.listSize) ? (
     <div className="full-game-board"
       tabIndex={0}
       onKeyUp={e => onKeyUp(e.key)}>
@@ -154,7 +154,7 @@ const FullGameBoard = (): JSX.Element => {
       </h3>
     </div>
   ) : (
-    <div>
+    <div className="full-game-board">
       <h1>Game Over</h1>
       <h2>
         Final Score:

@@ -30,10 +30,7 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
 
 export const genTilesMap = (tiles: LinkedList): Map<string, Tile> => {
   const newTilesMap = new Map<string, Tile>();
-
-  tiles.loop(tile => {
-    newTilesMap[tile.id] = tile;
-  });
+  tiles.loop(tile => newTilesMap[tile.id] = tile);
 
   return newTilesMap;
 };

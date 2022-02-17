@@ -8,8 +8,8 @@ import { Tile } from './utils/types/Tile';
 type UserStandProps = {
   currWordTiles: string[],
   allTiles: Map<String, Tile>,
-  removeTile: (string) => void,
-  toggleTile: (string) => void,
+  removeTile: (tileId: string) => void,
+  toggleTile: (tileId: string) => void,
   submitWord: () => void,
   onSwap: () => void,
   remainingTiles: number,
@@ -24,9 +24,7 @@ const UserStand = ({
   remainingTiles,
   onSwap
 }: UserStandProps): JSX.Element => (
-  <div
-    className="user-stand"
-  >
+  <div className="user-stand">
     <div className="user-stand-tile-box user-word">
       {currWordTiles.map((tileId: string) => {
         const tile: Tile = allTiles[tileId];
