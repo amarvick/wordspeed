@@ -15,60 +15,64 @@ type UserStandProps = {
   remainingTiles: number,
 }
 
-function UserStand({
-  currWordTiles, allTiles, removeTile, toggleTile, submitWord, remainingTiles, onSwap
-}: UserStandProps): JSX.Element {
-  return (
-    <div
-      className="user-stand"
-    >
-      <div className="user-stand-tile-box user-word">
-        {currWordTiles.map((tileId: string) => {
-          const tile: Tile = allTiles[tileId];
-          return (
-            <TileComponent
-              type={tile.type}
-              value={tile.value}
-              key={`${tile.id}-word-tile`}
-              points={tile.points}
-              isFlipped={false}
-              onClick={() => removeTile(tileId)}
-            />
-          );
-        })}
-      </div>
-
-      <div className="user-stand-tile-box user-tiles">
-        {Object.values(allTiles).map((tile: Tile) => (
+const UserStand = ({
+  currWordTiles,
+  allTiles,
+  removeTile,
+  toggleTile,
+  submitWord,
+  remainingTiles,
+  onSwap
+}: UserStandProps): JSX.Element => (
+  <div
+    className="user-stand"
+  >
+    <div className="user-stand-tile-box user-word">
+      {currWordTiles.map((tileId: string) => {
+        const tile: Tile = allTiles[tileId];
+        return (
           <TileComponent
             type={tile.type}
             value={tile.value}
-            key={`${tile.id}-dash-tile`}
+            key={`${tile.id}-word-tile`}
             points={tile.points}
             isFlipped={false}
-            isSelected={currWordTiles.includes(tile.id)}
-            onClick={() => toggleTile(tile.id)}
-            isDeck
+            onClick={() => removeTile(tileId)}
           />
-        ))}
-      </div>
-      <div className="btn-class">
-        <button
-          className="button"
-          onClick={() => submitWord()}
-        >
-          Submit Word
-      </button>
-        <button
-          className="button"
-          disabled={remainingTiles < currWordTiles.length}
-          onClick={onSwap}
-        >
-          Swap Tiles
-      </button>
-      </div>
+        );
+      })}
     </div>
-  );
-}
+
+    <div className="user-stand-tile-box user-tiles">
+      {Object.values(allTiles).map((tile: Tile) => (
+        <TileComponent
+          type={tile.type}
+          value={tile.value}
+          key={`${tile.id}-dash-tile`}
+          points={tile.points}
+          isFlipped={false}
+          isSelected={currWordTiles.includes(tile.id)}
+          onClick={() => toggleTile(tile.id)}
+          isDeck
+        />
+      ))}
+    </div>
+    <div className="btn-class">
+      <button
+        className="button"
+        onClick={() => submitWord()}
+      >
+        Submit Word
+      </button>
+      <button
+        className="button"
+        disabled={remainingTiles < currWordTiles.length}
+        onClick={onSwap}
+      >
+        Swap Tiles
+      </button>
+    </div>
+  </div>
+);
 
 export default UserStand;

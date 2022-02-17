@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import FlippedTiles from './FlippedTiles.tsx';
 // @ts-ignore
 import UserStand from './UserStand.tsx';
-import './UserStand.css';
 // @ts-ignore
 import { ERR_NEEDS_MORE_CHARS, INVALID_WORD } from './utils/consts.ts';
 // @ts-ignore
@@ -25,11 +24,12 @@ function FullGameBoard(): JSX.Element {
   const [time, setTime] = useState(60);
   const [error, setError] = useState('');
 
-  const [currWordTiles, setCurrWordTiles] = useState([]);
-  const [deckTiles, setDeckTiles] = useState(genTilesMap(initDeck));
   const [flippedTiles, setFlippedTiles] = useState(initTiles);
+  const [currWordTiles, setCurrWordTiles] = useState([]);
+  const [deckTiles, setDeckTiles] = useState(initDeck);
 
-  const allTileValues: Tile[] = Object.values(deckTiles);
+  const allTiles = genTilesMap(deckTiles);
+  const allTileValues: Tile[] = Object.values(allTiles);
 
   const setTiles = (flippedTiles: LinkedList, deckTiles: LinkedList): void => {
     setFlippedTiles(flippedTiles);
@@ -52,14 +52,13 @@ function FullGameBoard(): JSX.Element {
   const acceptWord = (tileIds: Set<string>): LinkedList => {
     const tilesToRemove: Tile[] = deckTiles.deleteBulk(tileIds);
 
-    // TODO - Score counting is broken.
     setScore(score + (
       tilesToRemove.reduce((acc: number, tile: Tile) => {
         const newTile = flippedTiles.deleteTail();
         if (newTile) deckTiles.append(newTile);
 
         return acc + tile.points;
-      }, 0)
+      }, 0) * tilesToRemove.length
     ));
 
     setTiles(flippedTiles, deckTiles);
@@ -67,14 +66,14 @@ function FullGameBoard(): JSX.Element {
   };
 
   const submitWord = (): void => {
-    const word = currWordTiles.map(tile => deckTiles[tile].value).join('');
+    const word = currWordTiles.map(tile => allTiles[tile].value).join('');
 
     if (word.length < 2) {
       setError(ERR_NEEDS_MORE_CHARS)
     } else if (wordBank.has(word)) {
       const newTiles: LinkedList = acceptWord(new Set(currWordTiles));
       setCurrWordTiles([]);
-      setDeckTiles(genTilesMap(newTiles));
+      setDeckTiles(newTiles);
     } else {
       setError(INVALID_WORD);
     }
@@ -101,7 +100,7 @@ function FullGameBoard(): JSX.Element {
   const onSwap = (): void => {
     setError('');
     const newTiles: LinkedList = swapTiles(new Set(currWordTiles));
-    setDeckTiles(genTilesMap(newTiles));
+    setDeckTiles(newTiles);
     setCurrWordTiles([]);
   };
 
@@ -120,7 +119,7 @@ function FullGameBoard(): JSX.Element {
       let isTileFound = false;
       let inc = 0;
 
-      while (!isTileFound && inc < allTileValues.length) {
+      while (!isTileFound && inc < deckTiles.listSize) {
         const tile = allTileValues[inc];
         if (key.toUpperCase() === tile.value && !currWordTiles.includes(tile.id)) {
           typedTileId = tile.id;
@@ -136,11 +135,11 @@ function FullGameBoard(): JSX.Element {
   return time ? (
     <div className="full-game-board"
       tabIndex={0}
-      onKeyUp={(e) => onKeyUp(e.key)}>
+      onKeyUp={e => onKeyUp(e.key)}>
       <FlippedTiles tiles={flippedTiles} />
       <UserStand
         currWordTiles={currWordTiles}
-        allTiles={deckTiles}
+        allTiles={allTiles}
         removeTile={acceptWord} 
         toggleTile={toggleTile}
         submitWord={submitWord} 
