@@ -4,6 +4,13 @@ import React, { useState } from 'react';
 import FlippedTiles from './FlippedTiles.tsx';
 // @ts-ignore
 import UserStand from './UserStand.tsx';
+import './UserStand.css';
+// @ts-ignore
+import { ERR_NEEDS_MORE_CHARS, INVALID_WORD } from './utils/consts.ts';
+// @ts-ignore
+import { wordBank } from '../../data/words.ts';
+// @ts-ignore
+import { genTilesMap } from './utils/helpers.ts';
 import './FullGameBoard.css';
 
 // @ts-ignore
@@ -12,68 +19,140 @@ import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';
 
 function FullGameBoard(): JSX.Element {
-  const [initTiles, initDeck] = initializeTiles();
+  const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
   const [score, setScore] = useState(0);
   const [time, setTime] = useState(60);
   const [error, setError] = useState('');
 
-  const [currTiles, setCurrTiles] = useState(initDeck);
+  const [currWordTiles, setCurrWordTiles] = useState([]);
+  const [deckTiles, setDeckTiles] = useState(genTilesMap(initDeck));
   const [flippedTiles, setFlippedTiles] = useState(initTiles);
 
-  const setTiles = (flippedTiles: LinkedList, currTiles: LinkedList): void => {
+  const allTileValues: Tile[] = Object.values(deckTiles);
+
+  const setTiles = (flippedTiles: LinkedList, deckTiles: LinkedList): void => {
     setFlippedTiles(flippedTiles);
-    setCurrTiles(currTiles);
+    setDeckTiles(deckTiles);
   };
 
   const swapTiles = (tileIds: Set<string>): LinkedList => {
-    const tilesToRemove: Tile[] = currTiles.deleteBulk(tileIds);
+    const tilesToRemove: Tile[] = deckTiles.deleteBulk(tileIds);
 
     tilesToRemove.forEach(tile => {
       flippedTiles.prepend(tile);
       const newTile = flippedTiles.deleteTail();
-      if (newTile) currTiles.append(newTile);
+      if (newTile) deckTiles.append(newTile);
     });
 
-    setTiles(flippedTiles, currTiles);
-    return currTiles;
+    setTiles(flippedTiles, deckTiles);
+    return deckTiles;
   };
 
   const acceptWord = (tileIds: Set<string>): LinkedList => {
-    const tilesToRemove: Tile[] = currTiles.deleteBulk(tileIds);
+    const tilesToRemove: Tile[] = deckTiles.deleteBulk(tileIds);
 
     // TODO - Score counting is broken.
     setScore(score + (
       tilesToRemove.reduce((acc: number, tile: Tile) => {
         const newTile = flippedTiles.deleteTail();
-        if (newTile) currTiles.append(newTile);
+        if (newTile) deckTiles.append(newTile);
 
         return acc + tile.points;
       }, 0)
     ));
 
-    setTiles(flippedTiles, currTiles);
-    return currTiles;
+    setTiles(flippedTiles, deckTiles);
+    return deckTiles;
+  };
+
+  const submitWord = (): void => {
+    const word = currWordTiles.map(tile => deckTiles[tile].value).join('');
+
+    if (word.length < 2) {
+      setError(ERR_NEEDS_MORE_CHARS)
+    } else if (wordBank.has(word)) {
+      const newTiles: LinkedList = acceptWord(new Set(currWordTiles));
+      setCurrWordTiles([]);
+      setDeckTiles(genTilesMap(newTiles));
+    } else {
+      setError(INVALID_WORD);
+    }
+  };
+
+  const addTile = (tileId: string): void => {
+    setError('');
+    const wordTiles = [...currWordTiles];
+    wordTiles.push(tileId);
+    setCurrWordTiles(wordTiles);
+  };
+
+  const removeTile = (tileId: string): void => {
+    setError('');
+    const wordTiles = [...currWordTiles];
+    wordTiles.splice(wordTiles.indexOf(tileId), 1);
+    setCurrWordTiles(wordTiles);
+  };
+
+  const toggleTile = (tileId: string): void => {
+    (!currWordTiles.includes(tileId) ? addTile : removeTile)(tileId);
+  };
+
+  const onSwap = (): void => {
+    setError('');
+    const newTiles: LinkedList = swapTiles(new Set(currWordTiles));
+    setDeckTiles(genTilesMap(newTiles));
+    setCurrWordTiles([]);
+  };
+
+  // TODO - Use keycode instead of "Enter/Left/Backspace"? if so, tile.value should be converted to a keycode
+  const onKeyUp = (key: string): void => {
+    setError('');
+    if (key === 'Enter') {
+      submitWord();
+    } else if (key === 'Left') {
+      onSwap();
+    } else if (key === 'Backspace') {
+      if (currWordTiles.length) removeTile(currWordTiles[currWordTiles.length - 1]);
+    } else {
+      // TODO - can this be cleaner?
+      let typedTileId;
+      let isTileFound = false;
+      let inc = 0;
+
+      while (!isTileFound && inc < allTileValues.length) {
+        const tile = allTileValues[inc];
+        if (key.toUpperCase() === tile.value && !currWordTiles.includes(tile.id)) {
+          typedTileId = tile.id;
+          isTileFound = true;
+        }
+        inc++;
+      }
+
+      if (typedTileId) addTile(typedTileId);
+    }
   };
 
   return time ? (
-    <div className="full-game-board">
+    <div className="full-game-board"
+      tabIndex={0}
+      onKeyUp={(e) => onKeyUp(e.key)}>
       <FlippedTiles tiles={flippedTiles} />
       <UserStand
-        tiles={currTiles}
-        acceptWord={acceptWord}
-        swapTiles={swapTiles}
-        setError={setError}
+        currWordTiles={currWordTiles}
+        allTiles={deckTiles}
+        removeTile={acceptWord} 
+        toggleTile={toggleTile}
+        submitWord={submitWord} 
+        onSwap={onSwap}
         remainingTiles={flippedTiles.listSize}
       />
       {error}
       <h3>
-        Score:
-        {score}
+        Score: {score}
       </h3>
       <h3>
-        Time:
-        {time}
+        Time: {time}
       </h3>
     </div>
   ) : (

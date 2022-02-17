@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import './Tile.css';
+import './TileComponent.css';
 
 type TileComponentProps = {
   type: string,
@@ -21,7 +21,7 @@ function TileComponent({
   onClick,
   isSelected = false,
   isDeck = false,
-}: TileComponentProps): Component {
+}: TileComponentProps): JSX.Element {
   return (
     <div
       style={{ backgroundColor: isSelected ? 'gray' : 'black' }}
