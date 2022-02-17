@@ -17,7 +17,7 @@ import { initializeTiles } from './utils/helpers.ts';
 import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';
 
-function FullGameBoard(): JSX.Element {
+const FullGameBoard = (): JSX.Element => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
   const [score, setScore] = useState(0);
