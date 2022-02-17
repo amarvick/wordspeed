@@ -104,7 +104,6 @@ function FullGameBoard(): JSX.Element {
     setCurrWordTiles([]);
   };
 
-  // TODO - Use keycode instead of "Enter/Left/Backspace"? if so, tile.value should be converted to a keycode
   const onKeyUp = (key: string): void => {
     setError('');
     if (key === 'Enter') {

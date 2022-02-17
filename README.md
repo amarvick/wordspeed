@@ -8,12 +8,12 @@ WordSpeed is a front-end developed word game in which you use the standard set o
 ## Design Considerations
 The flipped tiles are represented as a linked list to make the insertion of swapped tiles run significantly faster as opposed to an array which shifts every other element over, depending on the number of tiles the user wants to swap.
 
-The tiles in your deck are initialized as a linked list, but generate into a map for quicker reference when using a tile for your drafted word.
+The tiles in your deck are initialized as a linked list, but generate into a map for quicker reference when using a tile for your drafted word. I may change this so there's no need to use one for this particular part; it's only important that the flipped tiles is a linked list.
 
-## To do
-- Fix score counter
+## TO DO
 - Fix bug where entering a word will show the "Cannot be less than 2 characters" error
-- Consider using keyCode instead of key
-- Cleanup some areas
-- Make more modern design
-- Ensure user can type anywhere on the screen instead of just the bottom part
+- Reorganize some functions, put them in better locations
+- Design - consider making a notepad + coffee cup, as well as an effect when tiles are used/shake the currWord deck when something is wrong
+- Implement power-up tiles (Or maybe do this for the paid app)
+- Find places to reduce time/space complexities
+- Make the full app with high-scores, menu, localhost... 

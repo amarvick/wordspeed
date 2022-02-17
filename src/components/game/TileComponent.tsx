@@ -13,7 +13,7 @@ type TileComponentProps = {
 }
 
 // TODO: implement type. "Char" -> "specChar" (rare, will give more points)
-function TileComponent({
+const TileComponent = ({
   type,
   value,
   points,
@@ -21,21 +21,19 @@ function TileComponent({
   onClick,
   isSelected = false,
   isDeck = false,
-}: TileComponentProps): JSX.Element {
-  return (
-    <div
-      style={{ backgroundColor: isSelected ? 'gray' : 'black' }}
-      className="tile"
-      onClick={!isFlipped && isDeck ? onClick : null}
-    >
-      { !isFlipped && (
-        <>
-          <p className="tile-value">{value}</p>
-          <p className="tile-points">{points}</p>
-        </>
-      )}
-    </div>
-  );
-}
+}: TileComponentProps): JSX.Element => (
+  <div
+    style={{ backgroundColor: isSelected ? 'gray' : 'black' }}
+    className="tile"
+    onClick={!isFlipped && isDeck ? onClick : null}
+  >
+    { !isFlipped && (
+      <>
+        <p className="tile-value">{value}</p>
+        <p className="tile-points">{points}</p>
+      </>
+    )}
+  </div>
+);
 
 export default TileComponent;
