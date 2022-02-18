@@ -27,7 +27,7 @@ const UserStand = ({
   onSwap,
   remainingTiles,
   error,
-}: UserStandProps): Element => (
+}: UserStandProps): JSX.Element => (
   <div className="user-stand">
     <div className="user-stand-tile-box user-word">
       {currWordTiles.map((tileId: string) => {

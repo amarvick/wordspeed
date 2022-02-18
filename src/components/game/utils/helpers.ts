@@ -28,9 +28,9 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
   return [flippedTiles, initializedDeck];
 };
 
-export const genTilesMap = (tiles: LinkedList): Map<string, Tile> => {
-  const newTilesMap = new Map<string, Tile>();
-  tiles.loop(tile => newTilesMap[tile.id] = tile);
+export const genTilesMap = (deckTiles: LinkedList): Map<string, Tile> => {
+  const deckTilesMap = new Map<string, Tile>();
+  deckTiles.loop(tile => deckTilesMap[tile.id] = tile);
 
-  return newTilesMap;
+  return deckTilesMap;
 };

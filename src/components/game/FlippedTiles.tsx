@@ -11,7 +11,7 @@ type FlippedTilesProps = {
   tiles: LinkedList
 }
 
-const FlippedTiles = ({ tiles }: FlippedTilesProps): Element => (
+const FlippedTiles = ({ tiles }: FlippedTilesProps): JSX.Element => (
   <div className="flipped-tiles">
     {tiles.map((tile: Tile) => (
       <TileComponent

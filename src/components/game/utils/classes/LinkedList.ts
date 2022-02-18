@@ -33,7 +33,7 @@ export default class LinkedList {
       oldHead.prev = this.head;
       this.head.next = oldHead;
     }
-    this.listSize = this.listSize + 1;;
+    this.listSize = this.listSize + 1;
   }
 
   deleteHead(): Tile {

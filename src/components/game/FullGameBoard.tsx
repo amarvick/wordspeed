@@ -27,7 +27,7 @@ type FullGameBoardProps = {
   setDisplayedScreen: (screen: string) => void
 }
 
-const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
+const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): JSX.Element => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
   const [gameInProgress, setGameInProgress] = useState(true);
@@ -41,9 +41,9 @@ const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
   const allTiles = genTilesMap(deckTiles);
   const allTileValues: Tile[] = Object.values(allTiles);
 
-  const setTiles = (flippedTiles: LinkedList, deckTiles: LinkedList): void => {
-    setFlippedTiles(flippedTiles);
-    setDeckTiles(deckTiles);
+  const setTiles = (newFlippedTiles: LinkedList, newDeckTiles: LinkedList): void => {
+    setFlippedTiles(newFlippedTiles);
+    setDeckTiles(newDeckTiles);
   };
 
   const onSwap = (): void => {
@@ -135,7 +135,7 @@ const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
 
   const getMessage = (): string => {
     if (!gameInProgress) return GAME_OVER
-    else if (!flippedTiles.size && !deckTiles.listSize) return BOARD_COMPLETED
+    else if (!flippedTiles.listSize && !deckTiles.listSize) return BOARD_COMPLETED
   }
 
   return gameInProgress && (flippedTiles.listSize || deckTiles.listSize) ? (

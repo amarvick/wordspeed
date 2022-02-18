@@ -7,7 +7,7 @@ type ButtonProps = {
   disabled: boolean,
 }
 
-const Button = ({ text, onClick, disabled = false }: ButtonProps): Element => (
+const Button = ({ text, onClick, disabled = false }: ButtonProps): JSX.Element => (
   <div
     className="button"
     onClick={onClick}
