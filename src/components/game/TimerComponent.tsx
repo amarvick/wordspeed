@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+// @ts-ignore
+import DataComponent from "./DataComponent.tsx";
 
 type TimerComponentProps = {
   setGameInProgress: (status: boolean) => void,
@@ -7,22 +9,23 @@ type TimerComponentProps = {
 const TimerComponent = ({
   setGameInProgress,
 }: TimerComponentProps): JSX.Element => {
-  const [secs, setTime] = React.useState(10);
+  const [secs, setTime] = React.useState(60);
   const tick = () => setTime([secs - 1]);
 
   useEffect(() => {
     if (secs > 0) {
-      const timerId = setInterval(() => tick(), 1000);
-      return () => clearInterval(timerId);
+      // const timerId = setInterval(() => tick(), 1000);
+      // return () => clearInterval(timerId);
     } else {
       setGameInProgress(false)
     }
   });
 
   return (
-    <div>
-      <p>{secs.toString()}</p>
-    </div>
+    <DataComponent 
+      header={"Time"}
+      text={secs.toString()}
+    />
   );
 }
 

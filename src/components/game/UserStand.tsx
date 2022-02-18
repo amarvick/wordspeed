@@ -15,6 +15,7 @@ type UserStandProps = {
   submitWord: () => void,
   onSwap: () => void,
   remainingTiles: number,
+  error: string,
 }
 
 const UserStand = ({
@@ -23,8 +24,9 @@ const UserStand = ({
   removeTile,
   toggleTile,
   submitWord,
+  onSwap,
   remainingTiles,
-  onSwap
+  error,
 }: UserStandProps): JSX.Element => (
   <div className="user-stand">
     <div className="user-stand-tile-box user-word">
@@ -42,6 +44,7 @@ const UserStand = ({
         );
       })}
     </div>
+    <p>{error}</p>
 
     <div className="user-stand-tile-box user-tiles">
       {Object.values(allTiles).map((tile: Tile) => (

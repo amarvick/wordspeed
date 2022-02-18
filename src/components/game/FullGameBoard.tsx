@@ -5,6 +5,8 @@ import FlippedTiles from './FlippedTiles.tsx';
 // @ts-ignore
 import TimerComponent from './TimerComponent.tsx';
 // @ts-ignore
+import DataComponent from './DataComponent.tsx';
+// @ts-ignore
 import GameOver from './GameOver.tsx';
 // @ts-ignore
 import UserStand from './UserStand.tsx';
@@ -140,11 +142,9 @@ const FullGameBoard = (): JSX.Element => {
         submitWord={submitWord}
         onSwap={onSwap}
         remainingTiles={flippedTiles.listSize}
+        error={error}
       />
-      {error}
-      <h3>
-        Score: {score}
-      </h3>
+      <DataComponent header="Score" text={score}/>
       <TimerComponent setGameInProgress={setGameInProgress} />
     </div>
   ) : <GameOver score={score} />;
