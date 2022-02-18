@@ -9,7 +9,7 @@ type MainMenuProps = {
   setDisplayedScreen: (game: string) => void
 }
 
-const MainMenu = ({ setDisplayedScreen }: MainMenuProps): JSX.Element => (
+const MainMenu = ({ setDisplayedScreen }: MainMenuProps): Element => (
   <div className="main-menu">
     Main Menu <br/>
     <Button

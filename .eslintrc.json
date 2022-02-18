@@ -18,9 +18,11 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "react-hooks"
+        "react-hooks",
+        "import"
     ],
     "rules": {
+        "@typescript-eslint/ban-ts-comment": "off",
         "no-use-before-define": "off",
         "no-extra-semi": "error",
         "semi-style": "error",

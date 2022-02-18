@@ -8,7 +8,7 @@ import MainMenu from './components/game/MainMenu.tsx';
 import { MAIN_MENU, GAME_SCREEN } from './components/game/utils/consts.ts';
 import background from './images/GrayDeskBg.jpeg'
 
-const App = (): JSX.Element => {
+const App = (): Element => {
   const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU)
   
   const screens = {

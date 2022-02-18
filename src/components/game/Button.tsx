@@ -7,14 +7,14 @@ type ButtonProps = {
   disabled: boolean,
 }
 
-const Button = ({ text, onClick, disabled = false }: ButtonProps): JSX.Element => (
-  <button
+const Button = ({ text, onClick, disabled = false }: ButtonProps): Element => (
+  <div
     className="button"
     onClick={onClick}
     disabled={disabled}
   >
-    {text}
-  </button>
+    <p className="button-text">{text}</p>
+  </div>
 );
 
 export default Button;

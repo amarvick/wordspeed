@@ -13,7 +13,6 @@ The flipped tiles are represented as a linked list to make the insertion of swap
 The tiles in your deck are initialized as a linked list, but generate into a map for quicker reference when using a tile for your drafted word. I may change this so there's no need to use one for this particular part; it's only important that the flipped tiles is a linked list.
 
 ## TO DO
-- Fix bug where entering a word will show the "Cannot be less than 2 characters" error
 - Make the full app with high-scores, menu, localhost...
 
 - Remove @ts-ignore lines, see if I can handle this in the linter + make linter config make sense

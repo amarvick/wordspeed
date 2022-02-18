@@ -10,14 +10,14 @@ type TimerComponentProps = {
 // Try to fix
 const TimerComponent = ({
   setGameInProgress,
-}: TimerComponentProps): JSX.Element => {
+}: TimerComponentProps): Element => {
   const [secs, setTime] = React.useState(45);
   const tick = (): void => setTime([secs - 1]);
 
   useEffect(() => {
     if (secs > 0) {
-      const timerId = setInterval(() => tick(), 1000);
-      return () => clearInterval(timerId);
+      // const timerId = setInterval(() => tick(), 1000);
+      // return () => clearInterval(timerId);
     } else {
       setGameInProgress(false)
     }

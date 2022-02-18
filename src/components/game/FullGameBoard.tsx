@@ -27,7 +27,7 @@ type FullGameBoardProps = {
   setDisplayedScreen: (screen: string) => void
 }
 
-const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): JSX.Element => {
+const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
   const [gameInProgress, setGameInProgress] = useState(true);
