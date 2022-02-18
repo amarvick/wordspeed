@@ -2,6 +2,8 @@ import React from 'react';
 
 // @ts-ignore
 import TileComponent from './TileComponent.tsx';
+// @ts-ignore
+import Button from './Button.tsx';
 import './UserStand.css';
 import { Tile } from './utils/types/Tile';
 
@@ -56,19 +58,15 @@ const UserStand = ({
       ))}
     </div>
     <div className="btn-class">
-      <button
-        className="button"
+      <Button
+        text="Submit Word"
         onClick={() => submitWord()}
-      >
-        Submit Word
-      </button>
-      <button
-        className="button"
+      />
+      <Button
+        text="Swap Tiles"
         disabled={remainingTiles < currWordTiles.length}
         onClick={onSwap}
-      >
-        Swap Tiles
-      </button>
+      />
     </div>
   </div>
 );

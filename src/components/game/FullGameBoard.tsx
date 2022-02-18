@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 // @ts-ignore
 import FlippedTiles from './FlippedTiles.tsx';
 // @ts-ignore
+import TimerComponent from './TimerComponent.tsx';
+// @ts-ignore
+import GameOver from './GameOver.tsx';
+// @ts-ignore
 import UserStand from './UserStand.tsx';
 // @ts-ignore
 import { ERR_NEEDS_MORE_CHARS, INVALID_WORD } from './utils/consts.ts';
@@ -20,8 +24,8 @@ import { Tile } from './utils/types/Tile';
 const FullGameBoard = (): JSX.Element => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
+  const [gameInProgress, setGameInProgress] = useState(true);
   const [score, setScore] = useState(0);
-  const [time, setTime] = useState(60);
   const [error, setError] = useState('');
 
   const [flippedTiles, setFlippedTiles] = useState(initTiles);
@@ -36,8 +40,9 @@ const FullGameBoard = (): JSX.Element => {
     setDeckTiles(deckTiles);
   };
 
-  const swapTiles = (tileIds: Set<string>): LinkedList => {
-    const tilesToRemove: Tile[] = deckTiles.deleteBulk(tileIds);
+  const onSwap = (): void => {
+    setError('');
+    const tilesToRemove: Tile[] = deckTiles.deleteBulk(new Set(currWordTiles));
 
     tilesToRemove.forEach(tile => {
       flippedTiles.prepend(tile);
@@ -46,11 +51,11 @@ const FullGameBoard = (): JSX.Element => {
     });
 
     setTiles(flippedTiles, deckTiles);
-    return deckTiles;
+    setCurrWordTiles([]);
   };
 
-  const acceptWord = (tileIds: Set<string>): LinkedList => {
-    const tilesToRemove: Tile[] = deckTiles.deleteBulk(tileIds);
+  const acceptWord = (): void => {
+    const tilesToRemove: Tile[] = deckTiles.deleteBulk(new Set(currWordTiles));
 
     setScore(score + (
       tilesToRemove.reduce((acc: number, tile: Tile) => {
@@ -62,7 +67,6 @@ const FullGameBoard = (): JSX.Element => {
     ));
 
     setTiles(flippedTiles, deckTiles);
-    return deckTiles;
   };
 
   const submitWord = (): void => {
@@ -71,9 +75,8 @@ const FullGameBoard = (): JSX.Element => {
     if (word.length < 2) {
       setError(ERR_NEEDS_MORE_CHARS)
     } else if (wordBank.has(word)) {
-      const newTiles: LinkedList = acceptWord(new Set(currWordTiles));
+      acceptWord();
       setCurrWordTiles([]);
-      setDeckTiles(newTiles);
     } else {
       setError(INVALID_WORD);
     }
@@ -95,13 +98,6 @@ const FullGameBoard = (): JSX.Element => {
 
   const toggleTile = (tileId: string): void => {
     (!currWordTiles.includes(tileId) ? addTile : removeTile)(tileId);
-  };
-
-  const onSwap = (): void => {
-    setError('');
-    const newTiles: LinkedList = swapTiles(new Set(currWordTiles));
-    setDeckTiles(newTiles);
-    setCurrWordTiles([]);
   };
 
   const onKeyUp = (key: string): void => {
@@ -131,7 +127,7 @@ const FullGameBoard = (): JSX.Element => {
     }
   };
 
-  return time && (!!flippedTiles.listSize || !!deckTiles.listSize) ? (
+  return gameInProgress && (flippedTiles.listSize || deckTiles.listSize) ? (
     <div className="full-game-board"
       tabIndex={0}
       onKeyUp={e => onKeyUp(e.key)}>
@@ -139,9 +135,9 @@ const FullGameBoard = (): JSX.Element => {
       <UserStand
         currWordTiles={currWordTiles}
         allTiles={allTiles}
-        removeTile={acceptWord} 
+        removeTile={removeTile}
         toggleTile={toggleTile}
-        submitWord={submitWord} 
+        submitWord={submitWord}
         onSwap={onSwap}
         remainingTiles={flippedTiles.listSize}
       />
@@ -149,19 +145,9 @@ const FullGameBoard = (): JSX.Element => {
       <h3>
         Score: {score}
       </h3>
-      <h3>
-        Time: {time}
-      </h3>
+      <TimerComponent setGameInProgress={setGameInProgress} />
     </div>
-  ) : (
-    <div className="full-game-board">
-      <h1>Game Over</h1>
-      <h2>
-        Final Score:
-        {score}
-      </h2>
-    </div>
-  );
+  ) : <GameOver score={score} />;
 }
 
 export default FullGameBoard;
