@@ -11,7 +11,7 @@ import GameOver from './GameOver.tsx';
 // @ts-ignore
 import UserStand from './UserStand.tsx';
 // @ts-ignore
-import { ERR_NEEDS_MORE_CHARS, INVALID_WORD } from './utils/consts.ts';
+import { ERR_NEEDS_MORE_CHARS, INVALID_WORD, BOARD_COMPLETED, GAME_OVER } from './utils/consts.ts';
 // @ts-ignore
 import { wordBank } from '../../data/words.ts';
 // @ts-ignore
@@ -23,7 +23,11 @@ import { initializeTiles } from './utils/helpers.ts';
 import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';
 
-const FullGameBoard = (): JSX.Element => {
+type FullGameBoardProps = {
+  setDisplayedScreen: (screen: string) => void
+}
+
+const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): JSX.Element => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
   const [gameInProgress, setGameInProgress] = useState(true);
@@ -129,6 +133,11 @@ const FullGameBoard = (): JSX.Element => {
     }
   };
 
+  const getMessage = (): string => {
+    if (!gameInProgress) return GAME_OVER
+    else if (!flippedTiles.size && !deckTiles.listSize) return BOARD_COMPLETED
+  }
+
   return gameInProgress && (flippedTiles.listSize || deckTiles.listSize) ? (
     <div className="full-game-board"
       tabIndex={0}
@@ -144,10 +153,14 @@ const FullGameBoard = (): JSX.Element => {
         remainingTiles={flippedTiles.listSize}
         error={error}
       />
-      <DataComponent header="Score" text={score}/>
+      <DataComponent header="Score" text={score} />
       <TimerComponent setGameInProgress={setGameInProgress} />
     </div>
-  ) : <GameOver score={score} />;
+  ) : <GameOver
+    message={getMessage()}
+    score={score}
+    setDisplayedScreen={setDisplayedScreen}
+  />;
 }
 
 export default FullGameBoard;

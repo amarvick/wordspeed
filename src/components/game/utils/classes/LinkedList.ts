@@ -21,7 +21,7 @@ export default class LinkedList {
       oldTail.next = this.tail;
       this.tail.prev = oldTail;
     }
-    this.listSize++;
+    this.listSize = this.listSize + 1;
   }
 
   prepend(tile: Tile): void {
@@ -33,7 +33,7 @@ export default class LinkedList {
       oldHead.prev = this.head;
       this.head.next = oldHead;
     }
-    this.listSize++;
+    this.listSize = this.listSize + 1;;
   }
 
   deleteHead(): Tile {
@@ -48,7 +48,7 @@ export default class LinkedList {
       this.head = this.head.next;
       this.head.prev = null;
     }
-    this.listSize--;
+    this.listSize = this.listSize - 1;
     return removedHead.tile;
   }
 
@@ -64,7 +64,7 @@ export default class LinkedList {
       this.tail = this.tail.prev;
       this.tail.next = null;
     }
-    this.listSize--;
+    this.listSize = this.listSize - 1;
     return removedTail.tile;
   }
 
@@ -84,7 +84,7 @@ export default class LinkedList {
         if (nextNode) nextNode.prev = prevNode;
         else this.tail = prevNode;
 
-        this.listSize--;
+        this.listSize = this.listSize - 1;
       }
 
       currentNode = currentNode.next;
@@ -94,7 +94,7 @@ export default class LinkedList {
 
   map(func: (tile: Tile) => void): any[] {
     let currentNode = this.head;
-    const all = [];
+    const all: any[] = [];
 
     while (currentNode) {
       all.push(func(currentNode.tile));

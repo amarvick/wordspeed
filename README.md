@@ -14,9 +14,9 @@ The tiles in your deck are initialized as a linked list, but generate into a map
 
 ## TO DO
 - Fix bug where entering a word will show the "Cannot be less than 2 characters" error
+- Make the full app with high-scores, menu, localhost...
+
+- Remove @ts-ignore lines, see if I can handle this in the linter + make linter config make sense
+- Make mobile friendly
 - Design - consider making a notepad + coffee cup, as well as an effect when tiles are used/shake the currWord deck when something is wrong
 - Implement power-up tiles (Or maybe do this for the paid app)
-- Make the full app with high-scores, menu, localhost...
-- Remove @ts-ignore lines, see if I can handle this in the linter. 
-- Make the linter config make sense :-)
-- Make mobile friendly
