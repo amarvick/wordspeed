@@ -6,9 +6,10 @@ import FullGameBoard from './components/game/FullGameBoard.tsx';
 import MainMenu from './components/game/MainMenu.tsx';
 // @ts-ignore
 import { MAIN_MENU, GAME_SCREEN } from './components/game/utils/consts.ts';
+// @ts-ignore
 import background from './images/GrayDeskBg.jpeg'
 
-const App = (): Element => {
+const App = (): JSX.Element => {
   const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU)
   
   const screens = {
