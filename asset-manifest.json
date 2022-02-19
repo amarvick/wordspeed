@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/wordspeed/static/css/main.15633e57.css",
+    "main.js": "/wordspeed/static/js/main.0efe231e.js",
+    "static/js/787.034e11e1.chunk.js": "/wordspeed/static/js/787.034e11e1.chunk.js",
+    "static/media/GrayDeskBg.jpeg": "/wordspeed/static/media/GrayDeskBg.43d87cbc77c1be6c2157.jpeg",
+    "index.html": "/wordspeed/index.html",
+    "main.15633e57.css.map": "/wordspeed/static/css/main.15633e57.css.map",
+    "main.0efe231e.js.map": "/wordspeed/static/js/main.0efe231e.js.map",
+    "787.034e11e1.chunk.js.map": "/wordspeed/static/js/787.034e11e1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.15633e57.css",
+    "static/js/main.0efe231e.js"
+  ]
+}
