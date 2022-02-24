@@ -7,6 +7,7 @@
   color: rgb(232, 232, 232);
   display: inline-block;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12), 0 5px 10px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
 }
 
 .tile-value {
@@ -17,4 +18,10 @@
 .tile-points {
   font-size: 12px;
   margin: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .tile {
+    padding: 1.5px;
+  }
 }
