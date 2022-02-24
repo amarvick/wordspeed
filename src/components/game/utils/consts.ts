@@ -6,4 +6,6 @@ export const NEW_HIGH_SCORE = "New High Score!";
 export const BOARD_COMPLETED = "You Finished the Board!";
 
 export const MAIN_MENU = "Main Menu";
-export const GAME_SCREEN = "Game Screen"
+export const GAME_SCREEN = "Game Screen";
+export const INSTRUCTIONS = "Instructions";
+export const HIGH_SCORES = "High Scores";

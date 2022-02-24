@@ -15,8 +15,8 @@ const TimerComponent = ({
 
   useEffect(() => {
     if (secs > 0) {
-      const timerId = setInterval(() => tick(), 1000);
-      return () => clearInterval(timerId);
+      // const timerId = setInterval(() => tick(), 1000);
+      // return () => clearInterval(timerId);
     } else {
       setGameInProgress(false)
     }
