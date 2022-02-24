@@ -11,7 +11,7 @@ import HighScores from './components/game/HighScores.tsx';
 // @ts-ignore
 import { MAIN_MENU, GAME_SCREEN, INSTRUCTIONS, HIGH_SCORES } from './components/game/utils/consts.ts';
 // @ts-ignore
-import background from './images/GrayDeskBg.jpeg'
+import background from './images/GrayDeskBg.png'
 
 const App = (): JSX.Element => {
   const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU)
@@ -36,7 +36,9 @@ const App = (): JSX.Element => {
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
-        height: '100vh',
+        backgroundRepeat: 'repeat-y',
+        width: '100vw',
+        height: '102vh',
         textAlign: 'center',
       }}
       className="App"

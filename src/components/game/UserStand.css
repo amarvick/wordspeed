@@ -14,7 +14,7 @@
   box-shadow: 0 15px 30px rgba(75, 75, 75, 0.12), 0 5px 10px rgba(39, 39, 39, 0.24);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 550) {
   .user-stand-tile-box {
     padding: 5px;
   }
