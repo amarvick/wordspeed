@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/wordspeed/static/css/main.b9ea83ef.css",
-    "main.js": "/wordspeed/static/js/main.0f22a600.js",
+    "main.css": "/wordspeed/static/css/main.1d647bee.css",
+    "main.js": "/wordspeed/static/js/main.de9d5572.js",
     "static/js/787.034e11e1.chunk.js": "/wordspeed/static/js/787.034e11e1.chunk.js",
-    "static/media/GrayDeskBg.jpeg": "/wordspeed/static/media/GrayDeskBg.43d87cbc77c1be6c2157.jpeg",
+    "static/media/GrayDeskBg.jpeg": "/wordspeed/static/media/GrayDeskBg.b4316c1604d10df7ba89.jpeg",
     "index.html": "/wordspeed/index.html",
-    "main.b9ea83ef.css.map": "/wordspeed/static/css/main.b9ea83ef.css.map",
-    "main.0f22a600.js.map": "/wordspeed/static/js/main.0f22a600.js.map",
+    "main.1d647bee.css.map": "/wordspeed/static/css/main.1d647bee.css.map",
+    "main.de9d5572.js.map": "/wordspeed/static/js/main.de9d5572.js.map",
     "787.034e11e1.chunk.js.map": "/wordspeed/static/js/787.034e11e1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b9ea83ef.css",
-    "static/js/main.0f22a600.js"
+    "static/css/main.1d647bee.css",
+    "static/js/main.de9d5572.js"
   ]
 }
