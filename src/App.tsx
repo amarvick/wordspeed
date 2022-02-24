@@ -36,7 +36,6 @@ const App = (): JSX.Element => {
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: 'cover',
-        backgroundRepeat: 'repeat-y',
         width: '100vw',
         height: '102vh',
         textAlign: 'center',
