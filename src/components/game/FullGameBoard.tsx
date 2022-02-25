@@ -139,9 +139,10 @@ const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): JSX.Element 
   }
 
   return gameInProgress && (flippedTiles.listSize || deckTiles.listSize) ? (
-    <div className="full-game-board"
+    <div
       tabIndex={0}
-      onKeyUp={e => onKeyUp(e.key)}>
+      onKeyUp={e => onKeyUp(e.key)}
+    >
       <FlippedTiles tiles={flippedTiles} />
       <UserStand
         currWordTiles={currWordTiles}

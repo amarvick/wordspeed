@@ -11,7 +11,7 @@ const DataComponent = ({
   text,
 }: DataComponentProps): JSX.Element => (
   <div className="data-component">
-    <h2>{header}</h2>
+    <h1>{header}</h1>
     <p>{text}</p>
   </div>
 )
