@@ -24,7 +24,7 @@ const Instructions = ({ setDisplayedScreen }: InstructionsProps): JSX.Element =>
         <p>
           Write as many words as you can using a hand of 8 Scrabble tiles within {GAME_TIME} seconds.
         </p>
-        <img height="250" width="500" src={GameScreenImg} />
+        <img src={GameScreenImg} />
         <p>
           Type out a word based off your tile hand (for desktop users), or click on tiles in your deck. You can remove letters by hitting backspace,
           or clicking on the tile in your deck used in the word that you wish to remove.
@@ -36,7 +36,7 @@ const Instructions = ({ setDisplayedScreen }: InstructionsProps): JSX.Element =>
           <li>Two or more tiles long</li>
           <li>An actual word</li>
         </ul><br/>
-        <img height="280" width="500" src={GenerateWordImg} />
+        <img src={GenerateWordImg} />
         <p>
           Points are awarded based off of:
         </p>
@@ -47,14 +47,14 @@ const Instructions = ({ setDisplayedScreen }: InstructionsProps): JSX.Element =>
         <p>
           Swap tiles by putting the letters you wish to swap on the word board and clicking the &quot;swap tiles&quot; button.
         </p>
-        <img height="280" width="500" src={SwapTilesImg} /><br />
+        <img src={SwapTilesImg} /><br />
         <Button
           text="Back to Menu"
           onClick={() => setDisplayedScreen(MAIN_MENU)}
         />
       </>
     )}
-    width={800}
+    maxWidth={800}
     height={500}
   />
 

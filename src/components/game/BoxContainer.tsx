@@ -3,15 +3,15 @@ import './BoxContainer.css'
 
 type HighScoresProps = {
   component: JSX.Element,
-  width: number,
+  maxWidth: number,
   height: number,
 }
 
-const HighScores = ({ component, width = 500, height = 300 }: HighScoresProps): JSX.Element => (
+const HighScores = ({ component, maxWidth = 500, height = 300 }: HighScoresProps): JSX.Element => (
   <div
     className="box-container"
     style={{
-      width,
+      maxWidth,
       height
     }}>
     {component}
