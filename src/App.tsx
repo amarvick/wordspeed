@@ -10,8 +10,6 @@ import Instructions from './components/game/Instructions.tsx';
 import HighScores from './components/game/HighScores.tsx';
 // @ts-ignore
 import { MAIN_MENU, GAME_SCREEN, INSTRUCTIONS, HIGH_SCORES } from './components/game/utils/consts.ts';
-// @ts-ignore
-import BackgroundImg from './images/GrayDeskBg.png'
 
 const App = (): JSX.Element => {
   const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU)
@@ -23,26 +21,16 @@ const App = (): JSX.Element => {
     200,
     100
   ];
-  
+
   const screens = {
     [MAIN_MENU]: <MainMenu setDisplayedScreen={setDisplayedScreen} />,
-    [GAME_SCREEN]: <FullGameBoard setDisplayedScreen={setDisplayedScreen}/>,
-    [INSTRUCTIONS]: <Instructions setDisplayedScreen={setDisplayedScreen}/>,
-    [HIGH_SCORES]: <HighScores highScores={highScores} setDisplayedScreen={setDisplayedScreen}/>,
+    [GAME_SCREEN]: <FullGameBoard setDisplayedScreen={setDisplayedScreen} />,
+    [INSTRUCTIONS]: <Instructions setDisplayedScreen={setDisplayedScreen} />,
+    [HIGH_SCORES]: <HighScores highScores={highScores} setDisplayedScreen={setDisplayedScreen} />,
   }
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${BackgroundImg})`,
-        backgroundSize: 'cover',
-        width: '100vw',
-        maxHeight: '100%',
-        height: '120vh',
-        textAlign: 'center',
-      }}
-      className="App"
-    >
+    <div className="App">
       {screens[displayedScreen]}
     </div>
   );
