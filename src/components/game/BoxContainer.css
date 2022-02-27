@@ -6,10 +6,24 @@
   color: rgb(209, 209, 209);
   padding: 10px;
   border-radius: 20px;
+  overflow-y: scroll;
 
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   position: fixed;
+}
+
+ol {
+  display: inline-block;
+}
+
+ul {
+  display: inline-block;
+  margin-top: 0;
+}
+
+li {
+  text-align: left;
 }
