@@ -1,4 +1,4 @@
-.instructions-container {
+.box-container {
   margin: auto;
   border: 2px solid rgb(72, 72, 72);
   background-color: rgb(79, 79, 79);  
@@ -6,10 +6,6 @@
   color: rgb(209, 209, 209);
   padding: 10px;
   border-radius: 20px;
-  width: 100%;
-  height: 100%;
-  max-width: 450px;
-  max-height: 350px;
 
   top: 0;
   bottom: 0;

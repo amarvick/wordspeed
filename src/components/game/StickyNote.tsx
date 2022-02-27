@@ -1,5 +1,5 @@
 import React from 'react'
-import './DataComponent.css';
+import './StickyNote.css';
 
 type DataComponentProps = {
   header: string,
@@ -10,7 +10,7 @@ const DataComponent = ({
   header,
   text,
 }: DataComponentProps): JSX.Element => (
-  <div className="data-component">
+  <div className="sticky-note">
     <h1>{header}</h1>
     <p>{text}</p>
   </div>

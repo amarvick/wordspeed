@@ -9,3 +9,5 @@ export const MAIN_MENU = "Main Menu";
 export const GAME_SCREEN = "Game Screen";
 export const INSTRUCTIONS = "Instructions";
 export const HIGH_SCORES = "High Scores";
+
+export const GAME_TIME = 45;

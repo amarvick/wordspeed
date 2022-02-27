@@ -1,4 +1,4 @@
-.data-component {
+.sticky-note {
   height: 100px;
   width: 150px;
   color: #000;
@@ -8,17 +8,17 @@
   font-family: "Reenie Beanie", cursive;
 }
 
-.data-component p {
+.sticky-note p {
   position: relative;
   top: -30px;
   font-size: 30px;
 }
 
-.data-component:nth-child(odd) {
+.sticky-note:nth-child(odd) {
   transform: rotate(4deg);
   background-color: #ffc;
 }
-.data-component:nth-child(even) {
+.sticky-note:nth-child(even) {
   transform: rotate(-4deg);
   background: #cfc
 }

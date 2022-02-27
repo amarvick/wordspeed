@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 // @ts-ignore
-import DataComponent from "./DataComponent.tsx";
+import StickyNote from "./StickyNote.tsx";
+// @ts-ignore
+import { GAME_TIME } from './utils/consts.ts';
 
 type TimerComponentProps = {
   setGameInProgress: (status: boolean) => void,
@@ -10,7 +12,7 @@ type TimerComponentProps = {
 const TimerComponent = ({
   setGameInProgress,
 }: TimerComponentProps): JSX.Element => {
-  const [secs, setTime] = React.useState(45);
+  const [secs, setTime] = React.useState(GAME_TIME);
   const tick = (): void => setTime(secs - 1);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const TimerComponent = ({
   });
 
   return (
-    <DataComponent 
+    <StickyNote 
       header={"Time"}
       text={secs.toString()}
     />

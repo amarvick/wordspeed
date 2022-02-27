@@ -5,7 +5,7 @@ import FlippedTiles from './FlippedTiles.tsx';
 // @ts-ignore
 import TimerComponent from './TimerComponent.tsx';
 // @ts-ignore
-import DataComponent from './DataComponent.tsx';
+import StickyNote from './StickyNote.tsx';
 // @ts-ignore
 import GameOver from './GameOver.tsx';
 // @ts-ignore
@@ -154,7 +154,7 @@ const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): JSX.Element 
         remainingTiles={flippedTiles.listSize}
         error={error}
       />
-      <DataComponent header="Score" text={score} />
+      <StickyNote header="Score" text={score} />
       <TimerComponent setGameInProgress={setGameInProgress} />
     </div>
   ) : <GameOver

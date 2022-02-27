@@ -1,9 +1,10 @@
 import React from 'react';
 // @ts-ignore
 import Button from './Button.tsx';
-import './GameOver.css';
 // @ts-ignore
 import { MAIN_MENU } from './utils/consts.ts';
+// @ts-ignore
+import BoxContainer from './BoxContainer.tsx';
 
 type GameOverProps = {
   message: string,
@@ -12,16 +13,18 @@ type GameOverProps = {
 }
 
 const GameOver = ({ message, score, setDisplayedScreen }: GameOverProps): JSX.Element => (
-  <div className="game-over">
-    <div className="game-over-container">
-      <h1>{message}</h1>
-      <p>Score: {score}</p>
-      <Button
-        text="Home"
-        onClick={() => setDisplayedScreen(MAIN_MENU)}
-      />
-    </div>
-  </div>
+  <BoxContainer
+    component={(
+      <>
+        <h1>{message}</h1>
+        <p>Score: {score}</p>
+        <Button
+          text="Home"
+          onClick={() => setDisplayedScreen(MAIN_MENU)}
+        />
+      </>
+    )}
+  />
 );
 
 export default GameOver;
