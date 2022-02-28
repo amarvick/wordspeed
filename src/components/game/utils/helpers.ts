@@ -34,3 +34,20 @@ export const genTilesMap = (deckTiles: LinkedList): Map<string, Tile> => {
 
   return deckTilesMap;
 };
+
+export const setHighScores = (score: number): void => {
+  const highScores: number[] = JSON.parse(localStorage.getItem("HighScores")) || [];
+
+  for (let i = 0; i < highScores.length; i++) {
+    const listScore = highScores[i];
+    if (score > listScore) {
+      highScores.splice(i, 0, score);
+      break;
+    }
+  }
+
+  if (highScores.length < 5) highScores.push(score);
+  else if (highScores.length > 5) highScores.pop();
+  localStorage.setItem("HighScores", JSON.stringify(highScores));
+
+}

@@ -16,11 +16,12 @@ const HighScores = ({ highScores, setDisplayedScreen }: HighScoresProps): JSX.El
     component={(
       <>
         <h1>High Scores</h1>
+        { highScores.length ?
         <ol>
           {highScores.map((score, index) => (
             <li key={`score-${index}`}>{score}</li>
           ))}
-        </ol> <br />
+        </ol> : <p>No scores recorded yet</p>}<br />
         <Button
           text="Back to Menu"
           onClick={() => setDisplayedScreen(MAIN_MENU)}

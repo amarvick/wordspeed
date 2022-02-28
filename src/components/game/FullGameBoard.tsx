@@ -155,7 +155,7 @@ const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): JSX.Element 
         error={error}
       />
       <StickyNote header="Score" text={score} />
-      <TimerComponent setGameInProgress={setGameInProgress} />
+      <TimerComponent setGameInProgress={setGameInProgress} score={score} />
     </div>
   ) : <GameOver
     message={getMessage()}

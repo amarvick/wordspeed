@@ -13,15 +13,7 @@ import { MAIN_MENU, GAME_SCREEN, INSTRUCTIONS, HIGH_SCORES } from './components/
 
 const App = (): JSX.Element => {
   const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU)
-  // TODO - Make localstorage, and then maybe do all hiscores
-  const highScores = [
-    500,
-    400,
-    300,
-    200,
-    100
-  ];
-
+  const highScores = JSON.parse(localStorage.getItem("HighScores")) || []
   const screens = {
     [MAIN_MENU]: <MainMenu setDisplayedScreen={setDisplayedScreen} />,
     [GAME_SCREEN]: <FullGameBoard setDisplayedScreen={setDisplayedScreen} />,
