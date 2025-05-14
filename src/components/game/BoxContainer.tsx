@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './BoxContainer.css'
 
-type HighScoresProps = {
-  component: Element,
+type BoxContainerProps = {
+  component: ReactNode,
   maxWidth?: number,
   height?: number,
 }
 
-const HighScores = ({ component, maxWidth = 500, height = 300 }: HighScoresProps): Element => (
+const BoxContainer = ({ component, maxWidth = 500, height = 300 }: BoxContainerProps): Element => (
   <div
     className="box-container"
     style={{
@@ -18,4 +18,4 @@ const HighScores = ({ component, maxWidth = 500, height = 300 }: HighScoresProps
   </div>
 );
 
-export default HighScores;
+export default BoxContainer;

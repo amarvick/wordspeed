@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'
-// @ts-ignore
+import React, { useEffect, useRef } from 'react'
 import StickyNote from "./StickyNote.tsx";
-// @ts-ignore
 import { GAME_TIME } from './utils/consts.ts';
-// @ts-ignore
 import { setHighScores } from './utils/helpers.ts';
 
 type TimerComponentProps = {
@@ -11,8 +8,6 @@ type TimerComponentProps = {
   score: number,
 }
 
-// TODO - Slightly broken because when you hit enter, the interval stops for a bit. Try to fix.
-// You may have to pull out this functionality to a parent element?
 const TimerComponent = ({
   setGameInProgress,
   score
@@ -20,15 +15,15 @@ const TimerComponent = ({
   const [secs, setTime] = React.useState(GAME_TIME);
   const tick = (): void => setTime(secs - 1);
 
+  const timerRef = useRef<number | null>(null);
   useEffect(() => {
     if (secs > 0) {
-      const timerId = setInterval(() => tick(), 1000);
-      return () => clearInterval(timerId);
-    } else {
-      setGameInProgress(false)
-      setHighScores(score);
+      timerRef.current = window.setInterval(() => tick(), 1000);
+      return () => window.clearInterval(timerRef.current);
     }
-  });
+    setGameInProgress(false);
+    setHighScores(score);
+  }, [secs, score, setGameInProgress, tick]);
 
   return (
     <StickyNote 

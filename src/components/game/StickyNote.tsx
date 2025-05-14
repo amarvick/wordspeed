@@ -1,19 +1,19 @@
 import React from 'react'
 import './StickyNote.css';
 
-type DataComponentProps = {
+type StickyNoteProps = {
   header: string,
   text: string
 }
 
-const DataComponent = ({
+const StickyNote = ({
   header,
   text,
-}: DataComponentProps): Element => (
+}: StickyNoteProps): Element => (
   <div className="sticky-note">
     <h1>{header}</h1>
     <p>{text}</p>
   </div>
 )
 
-export default DataComponent;
+export default StickyNote;

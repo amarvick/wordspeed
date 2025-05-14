@@ -1,10 +1,8 @@
 import React from 'react';
 
-// @ts-ignore
 import TileComponent from './TileComponent.tsx';
 import './FlippedTiles.css';
-// @ts-ignore
-import { LinkedList } from './utils/classes/LinkedList';
+import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';
 
 type FlippedTilesProps = {
@@ -20,7 +18,6 @@ const FlippedTiles = ({ tiles }: FlippedTilesProps): Element => (
         key={`flipped-tile-${tile.id}`}
         points={tile.points}
         isFlipped
-        backgroundColor="black"
       />
     ))}
   </div>

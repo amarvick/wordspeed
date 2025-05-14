@@ -1,8 +1,6 @@
 import React from 'react';
 
-// @ts-ignore
 import TileComponent from './TileComponent.tsx';
-// @ts-ignore
 import Button from './Button.tsx';
 import './UserStand.css';
 import { Tile } from './utils/types/Tile';

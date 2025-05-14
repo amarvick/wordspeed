@@ -1,9 +1,6 @@
 import React from 'react';
-// @ts-ignore
 import Button from './Button.tsx';
-// @ts-ignore
 import { MAIN_MENU } from './utils/consts.ts';
-// @ts-ignore
 import BoxContainer from './BoxContainer.tsx';
 
 type GameOverProps = {

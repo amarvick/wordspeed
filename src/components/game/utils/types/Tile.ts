@@ -1,5 +1,5 @@
 export type Tile = {
-  'id'?: string;
+  'id': string;
   'type': string;
   'value': string;
   'points': number;

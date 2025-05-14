@@ -16,7 +16,7 @@ const App = (): Element => {
   };
 
   return (
-    <div className="App">
+    <div>
       {createElement(screens[displayedScreen], { setDisplayedScreen })}
     </div>
   );

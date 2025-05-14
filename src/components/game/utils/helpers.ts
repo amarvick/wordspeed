@@ -1,5 +1,4 @@
 import _ from 'lodash';
-// @ts-ignore
 import LinkedList from './classes/LinkedList.ts';
 import tiles from '../../../data/tiles.json';
 import { Tile } from './types/Tile';
@@ -36,7 +35,7 @@ export const genTilesMap = (deckTiles: LinkedList): Map<string, Tile> => {
 };
 
 export const setHighScores = (score: number): void => {
-  const highScores: number[] = JSON.parse(localStorage.getItem("HighScores")) || [];
+  const highScores: number[] = JSON.parse(localStorage.getItem("HighScores") || "[]");
   let isScorePushed = false;
 
   for (let i = 0; i < highScores.length; i++) {
