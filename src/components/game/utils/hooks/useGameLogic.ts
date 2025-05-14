@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { ERR_NEEDS_MORE_CHARS, INVALID_WORD } from '../consts.ts';
-import { wordBank } from '../../../../data/words.ts'
+import { wordBank } from '../../../../data/words.ts';
 import { genTilesMap, initializeTiles } from '../helpers.ts';
 import LinkedList from '../classes/LinkedList';
 import { Tile } from '../types/Tile';
 
 export type GameLogic = {
-    score: number;
-    error: string;
-    flippedTiles: LinkedList;
-    currWordTiles: string[];
-    deckTiles: LinkedList;
-    allTiles: Map<string, Tile>;
-    onKeyUp: (key: string) => void;
-    toggleTile: (tileId: string) => void;
-    submitWord: () => void;
-    onSwap: () => void;
-}
+  score: number;
+  error: string;
+  flippedTiles: LinkedList;
+  currWordTiles: string[];
+  deckTiles: LinkedList;
+  allTiles: Map<string, Tile>;
+  onKeyUp: (key: string) => void;
+  toggleTile: (tileId: string) => void;
+  submitWord: () => void;
+  onSwap: () => void;
+};
 
 export const useGameLogic = (): GameLogic => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
@@ -31,7 +31,10 @@ export const useGameLogic = (): GameLogic => {
   const allTiles = genTilesMap(deckTiles);
   const allTileValues: Tile[] = Object.values(allTiles);
 
-  const setTiles = (newFlippedTiles: LinkedList, newDeckTiles: LinkedList): void => {
+  const setTiles = (
+    newFlippedTiles: LinkedList,
+    newDeckTiles: LinkedList,
+  ): void => {
     setFlippedTiles(newFlippedTiles);
     setDeckTiles(newDeckTiles);
   };
@@ -40,7 +43,7 @@ export const useGameLogic = (): GameLogic => {
     setError('');
     const tilesToRemove: Tile[] = deckTiles.deleteBulk(new Set(currWordTiles));
 
-    tilesToRemove.forEach(tile => {
+    tilesToRemove.forEach((tile) => {
       flippedTiles.prepend(tile);
       const newTile = flippedTiles.deleteTail();
       if (newTile) deckTiles.append(newTile);
@@ -53,20 +56,22 @@ export const useGameLogic = (): GameLogic => {
   const acceptWord = (): void => {
     const tilesToRemove: Tile[] = deckTiles.deleteBulk(new Set(currWordTiles));
 
-    setScore(score + (
-      tilesToRemove.reduce((acc: number, tile: Tile) => {
-        const newTile = flippedTiles.deleteTail();
-        if (newTile) deckTiles.append(newTile);
+    setScore(
+      score +
+        tilesToRemove.reduce((acc: number, tile: Tile) => {
+          const newTile = flippedTiles.deleteTail();
+          if (newTile) deckTiles.append(newTile);
 
-        return acc + tile.points;
-      }, 0) * tilesToRemove.length
-    ));
+          return acc + tile.points;
+        }, 0) *
+          tilesToRemove.length,
+    );
 
     setTiles(flippedTiles, deckTiles);
   };
 
   const submitWord = (): void => {
-    const word = currWordTiles.map(tile => allTiles[tile].value).join('');
+    const word = currWordTiles.map((tile) => allTiles[tile].value).join('');
 
     if (word.length < 2) {
       setError(ERR_NEEDS_MORE_CHARS);
@@ -103,7 +108,8 @@ export const useGameLogic = (): GameLogic => {
     } else if (key === 'Left') {
       onSwap();
     } else if (key === 'Backspace') {
-      if (currWordTiles.length) removeTile(currWordTiles[currWordTiles.length - 1]);
+      if (currWordTiles.length)
+        removeTile(currWordTiles[currWordTiles.length - 1]);
     } else {
       let typedTileId;
       let isTileFound = false;
@@ -111,7 +117,10 @@ export const useGameLogic = (): GameLogic => {
 
       while (!isTileFound && inc < deckTiles.listSize) {
         const tile = allTileValues[inc];
-        if (key.toUpperCase() === tile.value && !currWordTiles.includes(tile.id)) {
+        if (
+          key.toUpperCase() === tile.value &&
+          !currWordTiles.includes(tile.id)
+        ) {
           typedTileId = tile.id;
           isTileFound = true;
         }

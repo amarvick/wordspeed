@@ -6,8 +6,8 @@ import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';
 
 type FlippedTilesProps = {
-  tiles: LinkedList
-}
+  tiles: LinkedList;
+};
 
 const FlippedTiles = ({ tiles }: FlippedTilesProps): Element => (
   <div className="flipped-tiles">

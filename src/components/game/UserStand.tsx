@@ -6,15 +6,15 @@ import './UserStand.css';
 import { Tile } from './utils/types/Tile';
 
 type UserStandProps = {
-  currWordTiles: string[],
-  allTiles: Map<string, Tile>,
-  removeTile: (tileId: string) => void,
-  toggleTile: (tileId: string) => void,
-  submitWord: () => void,
-  onSwap: () => void,
-  remainingTiles: number,
-  error: string,
-}
+  currWordTiles: string[];
+  allTiles: Map<string, Tile>;
+  removeTile: (tileId: string) => void;
+  toggleTile: (tileId: string) => void;
+  submitWord: () => void;
+  onSwap: () => void;
+  remainingTiles: number;
+  error: string;
+};
 
 const UserStand = ({
   currWordTiles,
@@ -59,10 +59,7 @@ const UserStand = ({
       ))}
     </div>
     <div className="btn-class">
-      <Button
-        text="Submit Word"
-        onClick={() => submitWord()}
-      />
+      <Button text="Submit Word" onClick={() => submitWord()} />
       <Button
         text="Swap Tiles"
         disabled={remainingTiles < currWordTiles.length}

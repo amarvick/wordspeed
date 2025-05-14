@@ -6,7 +6,7 @@ import { Tile } from './types/Tile';
 export const initializeTiles = (): [LinkedList, LinkedList] => {
   let allTiles: Tile[] = [];
 
-  tiles.forEach(tile => {
+  tiles.forEach((tile) => {
     for (let i = 0; i < tile.count; i++) {
       allTiles.push({
         ...tile,
@@ -29,13 +29,15 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
 
 export const genTilesMap = (deckTiles: LinkedList): Map<string, Tile> => {
   const deckTilesMap = new Map<string, Tile>();
-  deckTiles.loop(tile => deckTilesMap[tile.id] = tile);
+  deckTiles.loop((tile) => (deckTilesMap[tile.id] = tile));
 
   return deckTilesMap;
 };
 
 export const setHighScores = (score: number): void => {
-  const highScores: number[] = JSON.parse(localStorage.getItem("HighScores") || "[]");
+  const highScores: number[] = JSON.parse(
+    localStorage.getItem('HighScores') || '[]',
+  );
   let isScorePushed = false;
 
   for (let i = 0; i < highScores.length; i++) {
@@ -49,5 +51,5 @@ export const setHighScores = (score: number): void => {
 
   if (highScores.length < 5 && !isScorePushed) highScores.push(score);
   else if (highScores.length > 5) highScores.pop();
-  localStorage.setItem("HighScores", JSON.stringify(highScores));
-}
+  localStorage.setItem('HighScores', JSON.stringify(highScores));
+};

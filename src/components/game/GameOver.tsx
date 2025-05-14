@@ -4,23 +4,24 @@ import { MAIN_MENU } from './utils/consts.ts';
 import BoxContainer from './BoxContainer.tsx';
 
 type GameOverProps = {
-  message: string,
-  score: number,
-  setDisplayedScreen: (screen: string) => void
-}
+  message: string;
+  score: number;
+  setDisplayedScreen: (screen: string) => void;
+};
 
-const GameOver = ({ message, score, setDisplayedScreen }: GameOverProps): Element => (
+const GameOver = ({
+  message,
+  score,
+  setDisplayedScreen,
+}: GameOverProps): Element => (
   <BoxContainer
-    component={(
+    component={
       <>
         <h1>{message}</h1>
         <p>Score: {score}</p>
-        <Button
-          text="Home"
-          onClick={() => setDisplayedScreen(MAIN_MENU)}
-        />
+        <Button text="Home" onClick={() => setDisplayedScreen(MAIN_MENU)} />
       </>
-    )}
+    }
   />
 );
 

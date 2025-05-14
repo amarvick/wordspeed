@@ -1,4 +1,4 @@
-import { Tile } from "../types/Tile";
+import { Tile } from '../types/Tile';
 
 export default class ListNode {
   tile: Tile;

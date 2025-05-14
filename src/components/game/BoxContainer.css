@@ -1,8 +1,10 @@
 .box-container {
   margin: auto;
   border: 2px solid rgb(72, 72, 72);
-  background-color: rgb(79, 79, 79);  
-  box-shadow: 0 15px 30px rgba(75, 75, 75, 0.12), 0 5px 10px rgba(39, 39, 39, 0.24);
+  background-color: rgb(79, 79, 79);
+  box-shadow:
+    0 15px 30px rgba(75, 75, 75, 0.12),
+    0 5px 10px rgba(39, 39, 39, 0.24);
   color: rgb(209, 209, 209);
   padding: 10px;
   border-radius: 20px;

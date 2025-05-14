@@ -1,16 +1,16 @@
-import React, { useEffect, useRef } from 'react'
-import StickyNote from "./StickyNote.tsx";
+import React, { useEffect, useRef } from 'react';
+import StickyNote from './StickyNote.tsx';
 import { GAME_TIME } from './utils/consts.ts';
 import { setHighScores } from './utils/helpers.ts';
 
 type TimerComponentProps = {
-  setGameInProgress: (status: boolean) => void,
-  score: number,
-}
+  setGameInProgress: (status: boolean) => void;
+  score: number;
+};
 
 const TimerComponent = ({
   setGameInProgress,
-  score
+  score,
 }: TimerComponentProps): Element => {
   const [secs, setTime] = React.useState(GAME_TIME);
   const tick = (): void => setTime(secs - 1);
@@ -25,12 +25,7 @@ const TimerComponent = ({
     setHighScores(score);
   }, [secs, score, setGameInProgress, tick]);
 
-  return (
-    <StickyNote 
-      header={"Time"}
-      text={secs.toString()}
-    />
-  );
-}
+  return <StickyNote header={'Time'} text={secs.toString()} />;
+};
 
 export default TimerComponent;

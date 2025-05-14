@@ -6,15 +6,15 @@ import StickyNote from './StickyNote.tsx';
 import GameOver from './GameOver.tsx';
 import UserStand from './UserStand.tsx';
 import './FullGameBoard.css';
-import { useGameLogic } from './utils/hooks/useGameLogic.ts'
+import { useGameLogic } from './utils/hooks/useGameLogic.ts';
 
 type FullGameBoardProps = {
   setDisplayedScreen: (screen: string) => void;
 };
 
 const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
-    const [gameInProgress, setGameInProgress] = useState(true);
-  
+  const [gameInProgress, setGameInProgress] = useState(true);
+
   const {
     score,
     error,
