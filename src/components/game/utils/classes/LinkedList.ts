@@ -36,7 +36,7 @@ export default class LinkedList {
     this.listSize = this.listSize + 1;
   }
 
-  deleteHead(): Tile {
+  deleteHead(): Tile | null {
     if (!this.head) {
       return null;
     }

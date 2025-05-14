@@ -16,7 +16,7 @@ type TimerComponentProps = {
 const TimerComponent = ({
   setGameInProgress,
   score
-}: TimerComponentProps): JSX.Element => {
+}: TimerComponentProps): Element => {
   const [secs, setTime] = React.useState(GAME_TIME);
   const tick = (): void => setTime(secs - 1);
 

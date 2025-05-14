@@ -1,25 +1,15 @@
 import React, { useState } from 'react';
 
-// @ts-ignore
 import FlippedTiles from './FlippedTiles.tsx';
-// @ts-ignore
 import TimerComponent from './TimerComponent.tsx';
-// @ts-ignore
 import StickyNote from './StickyNote.tsx';
-// @ts-ignore
 import GameOver from './GameOver.tsx';
-// @ts-ignore
 import UserStand from './UserStand.tsx';
-// @ts-ignore
 import { ERR_NEEDS_MORE_CHARS, INVALID_WORD, BOARD_COMPLETED, GAME_OVER } from './utils/consts.ts';
-// @ts-ignore
 import { wordBank } from '../../data/words.ts';
-// @ts-ignore
-import { genTilesMap } from './utils/helpers.ts';
+import { genTilesMap, initializeTiles } from './utils/helpers.ts';
 import './FullGameBoard.css';
 
-// @ts-ignore
-import { initializeTiles } from './utils/helpers.ts';
 import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';
 
@@ -27,7 +17,7 @@ type FullGameBoardProps = {
   setDisplayedScreen: (screen: string) => void
 }
 
-const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): JSX.Element => {
+const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
   const [gameInProgress, setGameInProgress] = useState(true);

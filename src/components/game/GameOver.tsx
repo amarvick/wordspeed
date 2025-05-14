@@ -12,7 +12,7 @@ type GameOverProps = {
   setDisplayedScreen: (screen: string) => void
 }
 
-const GameOver = ({ message, score, setDisplayedScreen }: GameOverProps): JSX.Element => (
+const GameOver = ({ message, score, setDisplayedScreen }: GameOverProps): Element => (
   <BoxContainer
     component={(
       <>

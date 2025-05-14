@@ -1,24 +1,24 @@
 import React from 'react';
-// @ts-ignore
 import Button from './Button.tsx';
-// @ts-ignore
 import { MAIN_MENU } from './utils/consts.ts';
-// @ts-ignore
 import BoxContainer from './BoxContainer.tsx';
 
 type HighScoresProps = {
-  highScores: number[],
   setDisplayedScreen: (menu: string) => void
 }
 
-const HighScores = ({ highScores, setDisplayedScreen }: HighScoresProps): JSX.Element => (
+const HighScores = ({ setDisplayedScreen }: HighScoresProps): Element => {
+  const highScores = JSON.parse(localStorage.getItem("HighScores") || '[]')
+  const sortedHighScores = highScores.sort((a, b) => b - a).slice(0, 10);
+
+  return (
   <BoxContainer
     component={(
       <>
         <h1>High Scores</h1>
-        { highScores.length ?
+        { sortedHighScores.length ?
         <ol>
-          {highScores.map((score, index) => (
+          {sortedHighScores.map((score, index) => (
             <li key={`score-${index}`}>{score}</li>
           ))}
         </ol> : <p>No scores recorded yet</p>}<br />
@@ -29,6 +29,6 @@ const HighScores = ({ highScores, setDisplayedScreen }: HighScoresProps): JSX.El
       </>
     )}
   />
-);
+)};
 
 export default HighScores;

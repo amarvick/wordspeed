@@ -1,22 +1,16 @@
 import React from 'react';
-// @ts-ignore
 import Button from './Button.tsx';
-// @ts-ignore
 import { MAIN_MENU, GAME_TIME } from './utils/consts.ts';
-// @ts-ignore
 import BoxContainer from './BoxContainer.tsx';
-// @ts-ignore
 import GameScreenImg from '../../images/GameScreen.png';
-// @ts-ignore
 import GenerateWordImg from '../../images/GenerateWord.png';
-// @ts-ignore
 import SwapTilesImg from '../../images/SwapTiles.png';
 
 type InstructionsProps = {
   setDisplayedScreen: (menu: string) => void
 }
 
-const Instructions = ({ setDisplayedScreen }: InstructionsProps): JSX.Element => (
+const Instructions = ({ setDisplayedScreen }: InstructionsProps): Element => (
   <BoxContainer
     component={(
       <>
@@ -24,7 +18,7 @@ const Instructions = ({ setDisplayedScreen }: InstructionsProps): JSX.Element =>
         <p>
           Write as many words as you can using a hand of 8 Scrabble tiles within {GAME_TIME} seconds.
         </p>
-        <img src={GameScreenImg} />
+        <img src={GameScreenImg} alt="Example of the game screen layout" />
         <p>
           Type out a word based off your tile hand (for desktop users), or click on tiles in your deck. You can remove letters by hitting backspace,
           or clicking on the tile in your deck used in the word that you wish to remove.
@@ -36,7 +30,7 @@ const Instructions = ({ setDisplayedScreen }: InstructionsProps): JSX.Element =>
           <li>Two or more tiles long</li>
           <li>An actual word</li>
         </ul><br/>
-        <img src={GenerateWordImg} />
+        <img src={GenerateWordImg} alt="Instructions on generating a word" />
         <p>
           Points are awarded based off of:
         </p>
@@ -47,7 +41,7 @@ const Instructions = ({ setDisplayedScreen }: InstructionsProps): JSX.Element =>
         <p>
           Swap tiles by putting the letters you wish to swap on the word board and clicking the &quot;swap tiles&quot; button.
         </p>
-        <img src={SwapTilesImg} /><br />
+        <img src={SwapTilesImg} alt="Instructions on swapping tiles" />
         <Button
           text="Back to Menu"
           onClick={() => setDisplayedScreen(MAIN_MENU)}

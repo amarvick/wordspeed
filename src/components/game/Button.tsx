@@ -4,10 +4,10 @@ import './Button.css';
 type ButtonProps = {
   text: string,
   onClick: React.ButtonHTMLAttributes<HTMLButtonElement>,
-  disabled: boolean,
+  disabled?: boolean,
 }
 
-const Button = ({ text, onClick, disabled = false }: ButtonProps): JSX.Element => (
+const Button = ({ text, onClick, disabled = false }: ButtonProps): Element => (
   <div
     className="button"
     onClick={onClick}

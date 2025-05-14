@@ -9,7 +9,7 @@ type DataComponentProps = {
 const DataComponent = ({
   header,
   text,
-}: DataComponentProps): JSX.Element => (
+}: DataComponentProps): Element => (
   <div className="sticky-note">
     <h1>{header}</h1>
     <p>{text}</p>

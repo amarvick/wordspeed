@@ -21,7 +21,7 @@ const TileComponent = ({
   onClick,
   isSelected = false,
   isDeck = false,
-}: TileComponentProps): JSX.Element => (
+}: TileComponentProps): Element => (
   <div
     style={{ backgroundColor: isSelected ? 'gray' : 'black' }}
     className="tile"
