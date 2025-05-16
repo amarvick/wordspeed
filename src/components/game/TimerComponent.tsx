@@ -15,7 +15,7 @@ const TimerComponent = ({
   const [secs, setTime] = React.useState(GAME_TIME);
   const tick = (): void => setTime(secs - 1);
 
-  const timerRef = useRef<number | null>(null);
+  const timerRef = useRef<number>(GAME_TIME);
   useEffect(() => {
     if (secs > 0) {
       timerRef.current = window.setInterval(() => tick(), 1000);
@@ -25,7 +25,7 @@ const TimerComponent = ({
     setHighScores(score);
   }, [secs, score, setGameInProgress, tick]);
 
-  return <StickyNote header={'Time'} text={secs.toString()} />;
+  return <StickyNote header="Time" text={secs.toString()} />;
 };
 
 export default TimerComponent;

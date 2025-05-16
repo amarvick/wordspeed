@@ -6,11 +6,9 @@ type StickyNoteProps = {
   text: string;
 };
 
-const StickyNote = ({ header, text }: StickyNoteProps): Element => (
+export const StickyNote = ({ header, text }: StickyNoteProps): Element => (
   <div className="sticky-note">
     <h1>{header}</h1>
     <p>{text}</p>
   </div>
 );
-
-export default StickyNote;

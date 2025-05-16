@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import { ERR_NEEDS_MORE_CHARS, INVALID_WORD } from '../consts.ts';
 import { wordBank } from '../../../../data/words.ts';

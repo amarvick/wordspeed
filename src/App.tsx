@@ -1,6 +1,6 @@
 import React, { useState, createElement } from 'react';
 
-import FullGameBoard from './components/game/FullGameBoard.tsx';
+import GameScreen from './components/game/GameScreen.tsx';
 import MainMenu from './components/game/MainMenu.tsx';
 import Instructions from './components/game/Instructions.tsx';
 import HighScores from './components/game/HighScores.tsx';
@@ -15,7 +15,7 @@ const App = (): Element => {
   const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU);
   const screens = {
     [MAIN_MENU]: MainMenu,
-    [GAME_SCREEN]: FullGameBoard,
+    [GAME_SCREEN]: GameScreen,
     [INSTRUCTIONS]: Instructions,
     [HIGH_SCORES]: HighScores,
   };

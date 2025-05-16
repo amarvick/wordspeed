@@ -29,6 +29,7 @@ const TileComponent = ({
     className="tile"
     onClick={!isFlipped && isDeck ? onClick : null}
     key={key}
+    tabIndex={0}
   >
     {!isFlipped && (
       <>
