@@ -56,7 +56,7 @@ export const useGameLogic = (): GameLogic => {
     setCurrWordTiles([]);
   };
 
-  const acceptWord = (word: string): void => {
+  const acceptWord = (): void => {
     const tilesToRemove: Tile[] = deckTiles.deleteBulk(new Set(currWordTiles));
 
     setScore(
