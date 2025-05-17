@@ -7,7 +7,6 @@ import {
 import GameOver from './GameOver.tsx';
 import UserStand from './UserStand.tsx';
 import './FullGameBoard.css';
-import { useGameLogic } from './utils/hooks/useGameLogic.ts';
 import {
   genTilesMap,
   initializeTiles,
