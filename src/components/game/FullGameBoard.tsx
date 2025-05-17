@@ -1,6 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import FlippedTiles from './FlippedTiles.tsx';
-import { StickyNote as TimerComponent, StickyNote as ScoreComponent } from './StickyNote.tsx';
+import {
+  StickyNote as TimerComponent,
+  StickyNote as ScoreComponent,
+} from './StickyNote.tsx';
 import GameOver from './GameOver.tsx';
 import UserStand from './UserStand.tsx';
 import './FullGameBoard.css';
@@ -8,17 +11,14 @@ import { useGameLogic } from './utils/hooks/useGameLogic.ts';
 import { setHighScores } from './utils/helpers.ts';
 
 type FullGameBoardProps = {
-  setDisplayedScreen: (screen: string) => void;
-  gameInProgress: boolean;
-  remainingTime: number;
+  setDisplayedScreen: (_screen: string) => void;
 };
 
-const FullGameBoard = ({
-  setDisplayedScreen,
-  gameInProgress,
-  remainingTime,
-}: FullGameBoardProps): Element => {
+const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
+  const [gameInProgress, setGameInProgress] = useState(true);
   const {
+    remainingTime,
+    setRemainingTime,
     score,
     error,
     flippedTiles,
@@ -32,16 +32,35 @@ const FullGameBoard = ({
   } = useGameLogic();
 
   useEffect(() => {
-    if (!gameInProgress || !flippedTiles.listSize && !deckTiles.listSize) {
+    if (!gameInProgress || (!flippedTiles.listSize && !deckTiles.listSize)) {
       setHighScores(score);
     }
-  })
+  }, [gameInProgress, flippedTiles, deckTiles, score]);
 
   const getMessage = (): string => {
     if (!gameInProgress) return 'GAME OVER';
     if (!flippedTiles.listSize && !deckTiles.listSize) return 'BOARD COMPLETED';
     return '';
   };
+
+  useEffect(() => {
+    if (!gameInProgress || remainingTime <= 0) {
+      setGameInProgress(false);
+      return;
+    }
+
+    const timer = setInterval(() => {
+      setRemainingTime((prevTime) => prevTime - 1);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [gameInProgress, remainingTime]);
+
+  useEffect(() => {
+    if (remainingTime <= 0) {
+      setGameInProgress(false);
+    }
+  }, [remainingTime]);
 
   return gameInProgress && (flippedTiles.listSize || deckTiles.listSize) ? (
     <div
@@ -61,8 +80,8 @@ const FullGameBoard = ({
         remainingTiles={flippedTiles.listSize}
         error={error}
       />
-      <ScoreComponent header="Score" text={`${score}`} />
-      <TimerComponent header="Time" text={remainingTime.toString()} />;
+      <ScoreComponent header="Score" text={score.toString()} />
+      <TimerComponent header="Time" text={remainingTime.toString()} />
     </div>
   ) : (
     <GameOver

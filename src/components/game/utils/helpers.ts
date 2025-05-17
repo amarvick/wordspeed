@@ -2,6 +2,7 @@ import _ from 'lodash';
 import LinkedList from './classes/LinkedList.ts';
 import tiles from '../../../data/tiles.json';
 import { Tile } from './types/Tile';
+import { MAX_TILES_ALLOWED } from './consts.ts';
 
 export const initializeTiles = (): [LinkedList, LinkedList] => {
   let allTiles: Tile[] = [];
@@ -21,7 +22,10 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
   const initializedDeck: LinkedList = new LinkedList();
 
   allTiles.forEach((tile, index) => {
-    (index < allTiles.length - 8 ? flippedTiles : initializedDeck).append(tile);
+    (index < allTiles.length - MAX_TILES_ALLOWED
+      ? flippedTiles
+      : initializedDeck
+    ).append(tile);
   });
 
   return [flippedTiles, initializedDeck];

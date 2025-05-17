@@ -11,3 +11,4 @@ export const INSTRUCTIONS = 'Instructions';
 export const HIGH_SCORES = 'High Scores';
 
 export const GAME_TIME = 60;
+export const MAX_TILES_ALLOWED = 12;

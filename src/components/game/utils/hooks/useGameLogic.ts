@@ -1,12 +1,13 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
-import { ERR_NEEDS_MORE_CHARS, INVALID_WORD } from '../consts.ts';
+import { ERR_NEEDS_MORE_CHARS, GAME_TIME, INVALID_WORD } from '../consts.ts';
 import { wordBank } from '../../../../data/words.ts';
 import { genTilesMap, initializeTiles } from '../helpers.ts';
 import LinkedList from '../classes/LinkedList';
 import { Tile } from '../types/Tile';
 
 export type GameLogic = {
+  remainingTime: number;
+  setRemainingTime: any;
   score: number;
   error: string;
   flippedTiles: LinkedList;
@@ -23,6 +24,7 @@ export const useGameLogic = (): GameLogic => {
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
 
   const [score, setScore] = useState(0);
+  const [remainingTime, setRemainingTime] = useState(GAME_TIME);
   const [error, setError] = useState('');
 
   const [flippedTiles, setFlippedTiles] = useState(initTiles);
@@ -54,7 +56,7 @@ export const useGameLogic = (): GameLogic => {
     setCurrWordTiles([]);
   };
 
-  const acceptWord = (): void => {
+  const acceptWord = (word: string): void => {
     const tilesToRemove: Tile[] = deckTiles.deleteBulk(new Set(currWordTiles));
 
     setScore(
@@ -133,6 +135,8 @@ export const useGameLogic = (): GameLogic => {
   };
 
   return {
+    remainingTime,
+    setRemainingTime,
     score,
     error,
     flippedTiles,
