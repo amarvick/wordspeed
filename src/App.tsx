@@ -1,41 +1,27 @@
-import React, { useState, ReactElement } from 'react';
+import React, { useState, createElement, ReactElement } from 'react';
 
-import GameScreen from './components/game/GameScreen';
-import MainMenu from './components/game/MainMenu';
-import Instructions from './components/game/Instructions';
-import HighScores from './components/game/HighScores';
+import GameScreen from './components/game/GameScreen.tsx';
+import MainMenu from './components/game/MainMenu.tsx';
+import Instructions from './components/game/Instructions.tsx';
+import HighScores from './components/game/HighScores.tsx';
 import {
   MAIN_MENU,
   GAME_SCREEN,
   INSTRUCTIONS,
   HIGH_SCORES,
-} from './components/game/utils/consts';
-
-type ScreenKey =
-  | typeof MAIN_MENU
-  | typeof GAME_SCREEN
-  | typeof INSTRUCTIONS
-  | typeof HIGH_SCORES;
+} from './components/game/utils/consts.ts';
 
 const App = (): ReactElement => {
-  const [displayedScreen, setDisplayedScreen] = useState<ScreenKey>(MAIN_MENU);
-
-  const screens: Record<
-    ScreenKey,
-    React.FC<{ setDisplayedScreen: (screen: ScreenKey) => void }>
-  > = {
+  const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU);
+  const screens = {
     [MAIN_MENU]: MainMenu,
     [GAME_SCREEN]: GameScreen,
     [INSTRUCTIONS]: Instructions,
     [HIGH_SCORES]: HighScores,
   };
 
-  const CurrentScreen = screens[displayedScreen];
-
   return (
-    <div>
-      <CurrentScreen setDisplayedScreen={setDisplayedScreen} />
-    </div>
+    <div>{createElement(screens[displayedScreen], { setDisplayedScreen })}</div>
   );
 };
 
