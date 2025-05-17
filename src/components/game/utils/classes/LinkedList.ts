@@ -45,14 +45,16 @@ export default class LinkedList {
     if (this.head === this.tail) {
       this.head = this.tail = null;
     } else {
-      this.head = this.head.next;
-      this.head.prev = null;
+      this.head = this.head.next || null;
+      if (this.head) {
+        this.head.prev = null;
+      }
     }
     this.listSize = this.listSize - 1;
     return removedHead.tile;
   }
 
-  deleteTail(): Tile {
+  deleteTail(): Tile | null {
     if (!this.tail) {
       return null;
     }
@@ -61,8 +63,10 @@ export default class LinkedList {
     if (this.head === this.tail) {
       this.tail = this.head = null;
     } else {
-      this.tail = this.tail.prev;
-      this.tail.next = null;
+      this.tail = this.tail.prev || null;
+      if (this.tail) {
+        this.tail.next = null;
+      }
     }
     this.listSize = this.listSize - 1;
     return removedTail.tile;
@@ -87,37 +91,37 @@ export default class LinkedList {
         this.listSize = this.listSize - 1;
       }
 
-      currentNode = currentNode.next;
+      currentNode = currentNode.next || null;
     }
     return deletedTiles;
   }
 
-  map(func: (tile: Tile) => void): any[] {
+  map(func: (_tile: Tile) => void): any[] {
     let currentNode = this.head;
     const all: any[] = [];
 
     while (currentNode) {
       all.push(func(currentNode.tile));
-      currentNode = currentNode.next;
+      currentNode = currentNode.next || null;
     }
     return all;
   }
 
-  loop(func: (tile: Tile) => void): void {
+  loop(func: (_tile: Tile) => void): void {
     let currentNode = this.head;
 
     while (currentNode) {
       func(currentNode.tile);
-      currentNode = currentNode.next;
+      currentNode = currentNode.next || null;
     }
   }
 
-  reduce(func: (score: number, points: number) => number, score = 0): number {
+  reduce(func: (_score: number, _points: number) => number, score = 0): number {
     let currentNode = this.head;
 
     while (currentNode) {
       score = func(score, currentNode.tile.points);
-      currentNode = currentNode.next;
+      currentNode = currentNode.next || null;
     }
     return score;
   }

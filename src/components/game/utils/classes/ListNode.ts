@@ -5,7 +5,7 @@ export default class ListNode {
   prev?: ListNode | null;
   next?: ListNode | null;
 
-  constructor(tile, prev?, next?) {
+  constructor(tile: Tile, prev?: ListNode, next?: ListNode) {
     this.tile = tile;
     this.prev = prev || null;
     this.next = next || null;

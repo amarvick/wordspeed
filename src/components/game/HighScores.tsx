@@ -1,15 +1,17 @@
 import React, { ReactElement } from 'react';
-import Button from './Button.tsx';
-import { MAIN_MENU } from './utils/consts.ts';
-import BoxContainer from './BoxContainer.tsx';
+import Button from './Button';
+import { MAIN_MENU } from './utils/consts';
+import BoxContainer from './BoxContainer';
 
 type HighScoresProps = {
-  setDisplayedScreen: (menu: string) => void;
+  setDisplayedScreen: (_menu: string) => void;
 };
 
 const HighScores = ({ setDisplayedScreen }: HighScoresProps): ReactElement => {
   const highScores = JSON.parse(localStorage.getItem('HighScores') || '[]');
-  const sortedHighScores = highScores.sort((a, b) => b - a).slice(0, 10);
+  const sortedHighScores = highScores
+    .sort((a: number, b: number) => b - a)
+    .slice(0, 10);
 
   return (
     <BoxContainer
@@ -18,7 +20,7 @@ const HighScores = ({ setDisplayedScreen }: HighScoresProps): ReactElement => {
           <h1>High Scores</h1>
           {sortedHighScores.length ? (
             <ol>
-              {sortedHighScores.map((score, index) => (
+              {sortedHighScores.map((score: string, index: string) => (
                 <li key={`score-${index}`}>{score}</li>
               ))}
             </ol>

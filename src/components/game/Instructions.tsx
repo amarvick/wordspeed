@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import Button from './Button.tsx';
-import { MAIN_MENU, GAME_TIME } from './utils/consts.ts';
-import BoxContainer from './BoxContainer.tsx';
+import Button from './Button';
+import { MAIN_MENU, GAME_TIME } from './utils/consts';
+import BoxContainer from './BoxContainer';
 import GameScreenImg from '../../images/GameScreen.png';
 import GenerateWordImg from '../../images/GenerateWord.png';
 import SwapTilesImg from '../../images/SwapTiles.png';

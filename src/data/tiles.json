@@ -1,155 +1,181 @@
 [
   {
+    "id": "A",
     "type": "char",
     "value": "A",
     "points": 1,
     "count": 9
   },
   {
+    "id": "B",
     "type": "char",
     "value": "B",
     "points": 3,
     "count": 2
   },
   {
+    "id": "C",
     "type": "char",
     "value": "C",
     "points": 3,
     "count": 2
   },
   {
+    "id": "D",
     "type": "char",
     "value": "D",
     "points": 2,
     "count": 4
   },
   {
+    "id": "E",
     "type": "char",
     "value": "E",
     "points": 1,
     "count": 12
   },
   {
+    "id": "F",
     "type": "char",
     "value": "F",
     "points": 4,
     "count": 2
   },
   {
+    "id": "G",
     "type": "char",
     "value": "G",
     "points": 2,
     "count": 3
   },
   {
+    "id": "H",
     "type": "char",
     "value": "H",
     "points": 4,
     "count": 2
   },
   {
+    "id": "I",
     "type": "char",
     "value": "I",
     "points": 1,
     "count": 9
   },
   {
+    "id": "J",
     "type": "char",
     "value": "J",
     "points": 8,
     "count": 1
   },
   {
+    "id": "K",
     "type": "char",
     "value": "K",
     "points": 5,
     "count": 1
   },
   {
+    "id": "L",
     "type": "char",
     "value": "L",
     "points": 1,
     "count": 4
   },
   {
+    "id": "M",
     "type": "char",
     "value": "M",
     "points": 3,
     "count": 2
   },
   {
+    "id": "N",
     "type": "char",
     "value": "N",
     "points": 1,
     "count": 6
   },
   {
+    "id": "O",
     "type": "char",
     "value": "O",
     "points": 1,
     "count": 8
   },
   {
+    "id": "P",
     "type": "char",
     "value": "P",
     "points": 3,
     "count": 2
   },
   {
+    "id": "Q",
     "type": "char",
     "value": "Q",
     "points": 10,
     "count": 1
   },
   {
+    "id": "R",
     "type": "char",
     "value": "R",
     "points": 1,
     "count": 6
   },
   {
+    "id": "S",
     "type": "char",
     "value": "S",
     "points": 1,
     "count": 4
   },
   {
+    "id": "T",
     "type": "char",
     "value": "T",
     "points": 1,
     "count": 6
   },
   {
+    "id": "U",
     "type": "char",
     "value": "U",
     "points": 1,
     "count": 4
   },
   {
+    "id": "V",
     "type": "char",
     "value": "V",
     "points": 4,
     "count": 2
   },
   {
+    "id": "W",
     "type": "char",
     "value": "W",
     "points": 4,
     "count": 2
   },
   {
+    "id": "X",
     "type": "char",
     "value": "X",
     "points": 8,
     "count": 1
   },
   {
+    "id": "Y",
     "type": "char",
     "value": "Y",
     "points": 4,
     "count": 2
   },
   {
+    "id": "Z",
     "type": "char",
     "value": "Z",
     "points": 10,

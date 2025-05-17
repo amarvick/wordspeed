@@ -1,12 +1,12 @@
 import React, { ReactElement } from 'react';
-import Button from './Button.tsx';
-import { MAIN_MENU } from './utils/consts.ts';
-import BoxContainer from './BoxContainer.tsx';
+import Button from './Button';
+import { MAIN_MENU } from './utils/consts';
+import BoxContainer from './BoxContainer';
 
 type GameOverProps = {
   message: string;
   score: number;
-  setDisplayedScreen: (screen: string) => void;
+  setDisplayedScreen: (_screen: string) => void;
 };
 
 const GameOver = ({

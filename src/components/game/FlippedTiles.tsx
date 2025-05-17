@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import TileComponent from './TileComponent.tsx';
+import TileComponent from './TileComponent';
 import './FlippedTiles.css';
 import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';

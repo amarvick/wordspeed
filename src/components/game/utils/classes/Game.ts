@@ -53,7 +53,7 @@ export default class Game {
 
   onSubmitWord(): void {
     const word = this.currWordTiles
-      .map((tile) => this.allTiles.get[tile].value)
+      .map((tile) => this.allTiles.get(tile)?.value)
       .join('');
 
     if (word.length < 2) {

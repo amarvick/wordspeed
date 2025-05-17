@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import FullGameBoard from './FullGameBoard.tsx';
+import FullGameBoard from './FullGameBoard';
 import './GameScreen.css';
 
 type GameScreenProps = {

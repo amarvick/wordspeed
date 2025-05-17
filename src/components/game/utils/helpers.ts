@@ -1,13 +1,13 @@
 import _ from 'lodash';
-import LinkedList from './classes/LinkedList.ts';
-import tiles from './data/tiles.json';
+import LinkedList from './classes/LinkedList';
+import tiles from '../../../data/tiles.json';
 import { Tile } from './types/Tile';
-import { MAX_TILES_ALLOWED } from './consts.ts';
+import { MAX_TILES_ALLOWED } from './consts';
 
 export const initializeTiles = (): [LinkedList, LinkedList] => {
   let allTiles: Tile[] = [];
 
-  tiles.forEach((tile) => {
+  tiles.forEach((tile: Tile) => {
     for (let i = 0; i < tile.count; i++) {
       allTiles.push({
         ...tile,
@@ -33,7 +33,7 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
 
 export const genTilesMap = (deckTiles: LinkedList): Map<string, Tile> => {
   const deckTilesMap = new Map<string, Tile>();
-  deckTiles.loop((tile) => (deckTilesMap[tile.id] = tile));
+  deckTiles.loop((tile) => deckTilesMap.set(tile.id, tile));
 
   return deckTilesMap;
 };

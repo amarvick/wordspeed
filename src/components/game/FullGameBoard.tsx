@@ -1,21 +1,17 @@
 import React, { ReactElement, useEffect, useState } from 'react';
-import FlippedTiles from './FlippedTiles.tsx';
+import FlippedTiles from './FlippedTiles';
 import {
   StickyNote as TimerComponent,
   StickyNote as ScoreComponent,
-} from './StickyNote.tsx';
-import GameOver from './GameOver.tsx';
-import UserStand from './UserStand.tsx';
+} from './StickyNote';
+import GameOver from './GameOver';
+import UserStand from './UserStand';
 import './FullGameBoard.css';
-import {
-  genTilesMap,
-  initializeTiles,
-  setHighScores,
-} from './utils/helpers.ts';
-import Game from './utils/classes/Game.ts';
-import { GAME_TIME, MAX_TILES_ALLOWED } from './utils/consts.ts';
-import LinkedList from './utils/classes/LinkedList.ts';
-import { Tile } from './utils/types/Tile.ts';
+import { genTilesMap, initializeTiles, setHighScores } from './utils/helpers';
+import Game from './utils/classes/Game';
+import { GAME_TIME, MAX_TILES_ALLOWED } from './utils/consts';
+import LinkedList from './utils/classes/LinkedList';
+import { Tile } from './utils/types/Tile';
 
 type FullGameBoardProps = {
   setDisplayedScreen: (_screen: string) => void;
