@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import TileComponent from './TileComponent.tsx';
 import Button from './Button.tsx';
@@ -25,7 +25,7 @@ const UserStand = ({
   onSwap,
   remainingTiles,
   error,
-}: UserStandProps): Element => (
+}: UserStandProps): ReactElement => (
   <div className="user-stand">
     <div className="user-stand-tile-box user-word">
       {currWordTiles.map((tileId: string) => {

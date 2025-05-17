@@ -15,12 +15,18 @@ export default class Game {
   allTiles: Map<string, Tile>;
 
   // @TODO - determine if we should pass in remainingTime here, or just pull directly from settings?
-  constructor(remainingTime, maxTileCount, flippedTiles, deckTiles) {
+  constructor(
+    remainingTime: number,
+    maxTileCount: number,
+    flippedTiles: LinkedList,
+    deckTiles: LinkedList,
+  ) {
     this.remainingTime = remainingTime;
     this.score = 0;
     this.maxTileCount = maxTileCount;
     this.deckTiles = deckTiles;
     this.flippedTiles = flippedTiles;
+    this.currWordTiles = [];
     this.selectedTiles = [];
     this.errorMessage = '';
     this.allTiles = new Map();
@@ -47,7 +53,7 @@ export default class Game {
 
   onSubmitWord(): void {
     const word = this.currWordTiles
-      .map((tile) => this.allTiles[tile].value)
+      .map((tile) => this.allTiles.get[tile].value)
       .join('');
 
     if (word.length < 2) {

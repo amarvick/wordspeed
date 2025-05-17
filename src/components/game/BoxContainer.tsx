@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactElement, ReactNode } from 'react';
 import './BoxContainer.css';
 
 type BoxContainerProps = {
@@ -11,7 +11,7 @@ const BoxContainer = ({
   component,
   maxWidth = 500,
   height = 300,
-}: BoxContainerProps): Element => (
+}: BoxContainerProps): ReactElement => (
   <div
     className="box-container"
     style={{

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import './TileComponent.css';
 
@@ -23,7 +23,7 @@ const TileComponent = ({
   onClick,
   isSelected = false,
   isDeck = false,
-}: TileComponentProps): Element => (
+}: TileComponentProps): ReactElement => (
   <div
     style={{ backgroundColor: isSelected ? 'gray' : 'black' }}
     className="tile"

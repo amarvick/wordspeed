@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import LinkedList from './classes/LinkedList.ts';
-import tiles from '../../../data/tiles.json';
+import tiles from './data/tiles.json';
 import { Tile } from './types/Tile';
 import { MAX_TILES_ALLOWED } from './consts.ts';
 

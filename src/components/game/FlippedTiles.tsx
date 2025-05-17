@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 import TileComponent from './TileComponent.tsx';
 import './FlippedTiles.css';
@@ -9,7 +9,7 @@ type FlippedTilesProps = {
   tiles: LinkedList;
 };
 
-const FlippedTiles = ({ tiles }: FlippedTilesProps): Element => (
+const FlippedTiles = ({ tiles }: FlippedTilesProps): ReactElement => (
   <div className="flipped-tiles">
     {tiles.map((tile: Tile) => (
       <TileComponent

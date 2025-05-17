@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Button from './Button.tsx';
 import { MAIN_MENU } from './utils/consts.ts';
 import BoxContainer from './BoxContainer.tsx';
@@ -7,7 +7,7 @@ type HighScoresProps = {
   setDisplayedScreen: (menu: string) => void;
 };
 
-const HighScores = ({ setDisplayedScreen }: HighScoresProps): Element => {
+const HighScores = ({ setDisplayedScreen }: HighScoresProps): ReactElement => {
   const highScores = JSON.parse(localStorage.getItem('HighScores') || '[]');
   const sortedHighScores = highScores.sort((a, b) => b - a).slice(0, 10);
 
