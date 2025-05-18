@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Button from './Button.tsx';
 import { MAIN_MENU, GAME_TIME } from './utils/consts.ts';
 import BoxContainer from './BoxContainer.tsx';
@@ -10,7 +10,9 @@ type InstructionsProps = {
   setDisplayedScreen: (menu: string) => void;
 };
 
-const Instructions = ({ setDisplayedScreen }: InstructionsProps): Element => (
+const Instructions = ({
+  setDisplayedScreen,
+}: InstructionsProps): ReactElement => (
   <BoxContainer
     component={
       <>

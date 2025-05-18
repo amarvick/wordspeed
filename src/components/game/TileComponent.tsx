@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MouseEventHandler, ReactElement } from 'react';
 
 import './TileComponent.css';
 
@@ -6,10 +6,10 @@ type TileComponentProps = {
   type: string;
   value: string;
   points: number;
-  key;
+  key: string;
   isFlipped: boolean;
   isSelected?: boolean;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   isDeck?: boolean;
 };
 
@@ -23,11 +23,11 @@ const TileComponent = ({
   onClick,
   isSelected = false,
   isDeck = false,
-}: TileComponentProps): Element => (
+}: TileComponentProps): ReactElement => (
   <div
     style={{ backgroundColor: isSelected ? 'gray' : 'black' }}
     className="tile"
-    onClick={!isFlipped && isDeck ? onClick : null}
+    onClick={!isFlipped && isDeck ? onClick : undefined}
     key={key}
     tabIndex={0}
   >

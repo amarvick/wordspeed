@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-import TileComponent from './TileComponent.tsx';
-import Button from './Button.tsx';
+import TileComponent from './TileComponent';
+import Button from './Button';
 import './UserStand.css';
 import { Tile } from './utils/types/Tile';
 
@@ -25,21 +25,23 @@ const UserStand = ({
   onSwap,
   remainingTiles,
   error,
-}: UserStandProps): Element => (
+}: UserStandProps): ReactElement => (
   <div className="user-stand">
     <div className="user-stand-tile-box user-word">
       {currWordTiles.map((tileId: string) => {
-        const tile: Tile = allTiles[tileId];
-        return (
-          <TileComponent
-            type={tile.type}
-            value={tile.value}
-            key={`${tile.id}-word-tile`}
-            points={tile.points}
-            isFlipped={false}
-            onClick={() => removeTile(tileId)}
-          />
-        );
+        const tile = allTiles.get(tileId);
+        if (tile) {
+          return (
+            <TileComponent
+              type={tile.type}
+              value={tile.value}
+              key={`${tile.id}-word-tile`}
+              points={tile.points}
+              isFlipped={false}
+              onClick={() => removeTile(tileId)}
+            />
+          );
+        }
       })}
     </div>
     <p>{error}</p>

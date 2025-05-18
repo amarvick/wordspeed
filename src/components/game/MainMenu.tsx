@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Button from './Button.tsx';
 import { GAME_SCREEN, INSTRUCTIONS, HIGH_SCORES } from './utils/consts.ts';
 import BoxContainer from './BoxContainer.tsx';
@@ -7,7 +7,7 @@ type MainMenuProps = {
   setDisplayedScreen: (game: string) => void;
 };
 
-const MainMenu = ({ setDisplayedScreen }: MainMenuProps): Element => {
+const MainMenu = ({ setDisplayedScreen }: MainMenuProps): ReactElement => {
   const buttons = [
     { text: 'Play Game', action: () => setDisplayedScreen(GAME_SCREEN) },
     { text: 'High Scores', action: () => setDisplayedScreen(HIGH_SCORES) },

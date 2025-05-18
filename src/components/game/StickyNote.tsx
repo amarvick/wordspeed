@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import './StickyNote.css';
 
 type StickyNoteProps = {
@@ -6,7 +6,7 @@ type StickyNoteProps = {
   text: string;
 };
 
-export const StickyNote = ({ header, text }: StickyNoteProps): Element => (
+export const StickyNote = ({ header, text }: StickyNoteProps): ReactElement => (
   <div className="sticky-note">
     <h1>{header}</h1>
     <p>{text}</p>
