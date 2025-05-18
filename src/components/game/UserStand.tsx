@@ -29,19 +29,17 @@ const UserStand = ({
   <div className="user-stand">
     <div className="user-stand-tile-box user-word">
       {currWordTiles.map((tileId: string) => {
-        const tile = allTiles.get(tileId);
-        if (tile) {
-          return (
-            <TileComponent
-              type={tile.type}
-              value={tile.value}
-              key={`${tile.id}-word-tile`}
-              points={tile.points}
-              isFlipped={false}
-              onClick={() => removeTile(tileId)}
-            />
-          );
-        }
+        const tile: Tile = allTiles[tileId];
+        return (
+          <TileComponent
+            type={tile.type}
+            value={tile.value}
+            key={`${tile.id}-word-tile`}
+            points={tile.points}
+            isFlipped={false}
+            onClick={() => removeTile(tileId)}
+          />
+        );
       })}
     </div>
     <p>{error}</p>
