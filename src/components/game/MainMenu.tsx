@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import Button from './Button';
-import { GAME_SCREEN, INSTRUCTIONS, HIGH_SCORES } from './utils/consts';
-import BoxContainer from './BoxContainer';
+import Button from './Button.tsx';
+import { GAME_SCREEN, INSTRUCTIONS, HIGH_SCORES } from './utils/consts.ts';
+import BoxContainer from './BoxContainer.tsx';
 
 type MainMenuProps = {
   setDisplayedScreen: (game: string) => void;

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
-import Button from './Button';
-import { MAIN_MENU } from './utils/consts';
-import BoxContainer from './BoxContainer';
+import Button from './Button.tsx';
+import { MAIN_MENU } from './utils/consts.ts';
+import BoxContainer from './BoxContainer.tsx';
 
 type GameOverProps = {
   message: string;

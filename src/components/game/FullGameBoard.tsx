@@ -1,5 +1,5 @@
 import React, { ReactElement, useEffect, useState, useMemo } from 'react';
-import FlippedTiles from './FlippedTiles';
+import FlippedTiles from './FlippedTiles.tsx';
 import {
   StickyNote as TimerComponent,
   StickyNote as ScoreComponent,
