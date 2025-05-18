@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Button from './Button.tsx';
 import { MAIN_MENU } from './utils/consts.ts';
 import BoxContainer from './BoxContainer.tsx';
@@ -13,7 +13,7 @@ const GameOver = ({
   message,
   score,
   setDisplayedScreen,
-}: GameOverProps): Element => (
+}: GameOverProps): ReactElement => (
   <BoxContainer
     component={
       <>

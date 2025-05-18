@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React, { MouseEvent, ReactElement } from 'react';
 import './Button.css';
 
 type ButtonProps = {
@@ -7,7 +7,11 @@ type ButtonProps = {
   disabled?: boolean;
 };
 
-const Button = ({ text, onClick, disabled = false }: ButtonProps): Element => (
+const Button = ({
+  text,
+  onClick,
+  disabled = false,
+}: ButtonProps): ReactElement => (
   <button className="button" onClick={onClick} disabled={disabled}>
     <p className="button-text">{text}</p>
   </button>

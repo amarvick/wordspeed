@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import FullGameBoard from './FullGameBoard.tsx';
 import './GameScreen.css';
 
@@ -6,7 +6,7 @@ type GameScreenProps = {
   setDisplayedScreen: (screen: string) => void;
 };
 
-const GameScreen = ({ setDisplayedScreen }: GameScreenProps): Element => {
+const GameScreen = ({ setDisplayedScreen }: GameScreenProps): ReactElement => {
   return (
     <div className="GameScreen">
       <FullGameBoard setDisplayedScreen={setDisplayedScreen} />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import FlippedTiles from './FlippedTiles.tsx';
 import {
   StickyNote as TimerComponent,
@@ -14,7 +14,9 @@ type FullGameBoardProps = {
   setDisplayedScreen: (_screen: string) => void;
 };
 
-const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
+const FullGameBoard = ({
+  setDisplayedScreen,
+}: FullGameBoardProps): ReactElement => {
   const [gameInProgress, setGameInProgress] = useState(true);
   const {
     remainingTime,
@@ -50,7 +52,7 @@ const FullGameBoard = ({ setDisplayedScreen }: FullGameBoardProps): Element => {
     }
 
     const timer = setInterval(() => {
-      setRemainingTime((prevTime) => prevTime - 1);
+      setRemainingTime((prevTime: number) => prevTime - 1);
     }, 1000);
 
     return () => clearInterval(timer);

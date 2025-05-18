@@ -1,4 +1,4 @@
-import React, { useState, createElement } from 'react';
+import React, { useState, createElement, ReactElement } from 'react';
 
 import GameScreen from './components/game/GameScreen.tsx';
 import MainMenu from './components/game/MainMenu.tsx';
@@ -11,7 +11,7 @@ import {
   HIGH_SCORES,
 } from './components/game/utils/consts.ts';
 
-const App = (): Element => {
+const App = (): ReactElement => {
   const [displayedScreen, setDisplayedScreen] = useState(MAIN_MENU);
   const screens = {
     [MAIN_MENU]: MainMenu,
