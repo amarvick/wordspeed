@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState, useMemo } from 'react';
 import FlippedTiles from './FlippedTiles';
 import {
   StickyNote as TimerComponent,
@@ -20,12 +20,7 @@ type FullGameBoardProps = {
 const FullGameBoard = ({
   setDisplayedScreen,
 }: FullGameBoardProps): ReactElement => {
-  const [gameInProgress, setGameInProgress] = useState(true);
-
   const [initTiles, initDeck]: [LinkedList, LinkedList] = initializeTiles();
-
-  const allTiles = genTilesMap(initDeck);
-  const allTileValues: Tile[] = Object.values(allTiles);
 
   const CurrentGame = new Game(
     GAME_TIME,
@@ -33,6 +28,12 @@ const FullGameBoard = ({
     initTiles,
     initDeck,
   );
+
+  const [gameInProgress, setGameInProgress] = useState(true);
+  const [remainingTime, setRemainingTime] = useState(CurrentGame.remainingTime);
+
+  const allTiles = genTilesMap(initDeck);
+  const allTileValues: Tile[] = Object.values(allTiles);
 
   useEffect(() => {
     if (
@@ -57,17 +58,21 @@ const FullGameBoard = ({
     }
 
     const timer = setInterval(() => {
-      CurrentGame.setRemainingTime(CurrentGame.remainingTime - 1);
+      setRemainingTime((prevTime) => {
+        const newTime = prevTime - 1;
+        CurrentGame.setRemainingTime(newTime);
+        return newTime;
+      });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [Game, gameInProgress]);
+  }, [CurrentGame, gameInProgress, remainingTime]);
 
   useEffect(() => {
     if (CurrentGame.remainingTime <= 0) {
       setGameInProgress(false);
     }
-  }, [Game]);
+  }, [CurrentGame]);
 
   const onKeyUp = (key: string): void => {
     CurrentGame.setErrorMessage('');
@@ -100,6 +105,7 @@ const FullGameBoard = ({
       if (typedTileId) CurrentGame.addTile(typedTileId);
     }
   };
+  console.log(CurrentGame);
 
   return gameInProgress &&
     (CurrentGame.flippedTiles.listSize || CurrentGame.deckTiles.listSize) ? (
