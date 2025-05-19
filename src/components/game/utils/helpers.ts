@@ -1,10 +1,9 @@
 import _ from 'lodash';
-import LinkedList from './classes/LinkedList.ts';
 import tiles from '../../../data/tiles.json';
 import { Tile } from './types/Tile';
 import { MAX_TILES_ALLOWED } from './consts.ts';
 
-export const initializeTiles = (): [LinkedList, LinkedList] => {
+export const initializeTiles = (): [Tile[], Tile[]] => {
   let allTiles: Tile[] = [];
 
   tiles.forEach((tile) => {
@@ -18,22 +17,22 @@ export const initializeTiles = (): [LinkedList, LinkedList] => {
 
   allTiles = _.shuffle(allTiles);
 
-  const flippedTiles: LinkedList = new LinkedList();
-  const initializedDeck: LinkedList = new LinkedList();
+  const flippedTiles: Tile[] = [];
+  const initializedDeck: Tile[] = [];
 
   allTiles.forEach((tile, index) => {
     (index < allTiles.length - MAX_TILES_ALLOWED
       ? flippedTiles
       : initializedDeck
-    ).append(tile);
+    ).push(tile);
   });
 
   return [flippedTiles, initializedDeck];
 };
 
-export const genTilesMap = (deckTiles: LinkedList): Map<string, Tile> => {
+export const genTilesMap = (deckTiles: Tile[]): Map<string, Tile> => {
   const deckTilesMap = new Map<string, Tile>();
-  deckTiles.loop((tile) => (deckTilesMap[tile.id] = tile));
+  deckTiles.forEach((tile) => deckTilesMap.set(tile.id, tile));
 
   return deckTilesMap;
 };

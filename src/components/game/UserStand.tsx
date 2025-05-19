@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react';
-
-import TileComponent from './TileComponent';
-import Button from './Button';
+import TileComponent from './TileComponent.tsx';
+import Button from './Button.tsx';
 import './UserStand.css';
 import { Tile } from './utils/types/Tile';
 
 type UserStandProps = {
   currWordTiles: string[];
   allTiles: Map<string, Tile>;
+  deckTiles: Tile[];
   removeTile: (tileId: string) => void;
   toggleTile: (tileId: string) => void;
   submitWord: () => void;
@@ -19,6 +19,7 @@ type UserStandProps = {
 const UserStand = ({
   currWordTiles,
   allTiles,
+  deckTiles,
   removeTile,
   toggleTile,
   submitWord,
@@ -29,7 +30,8 @@ const UserStand = ({
   <div className="user-stand">
     <div className="user-stand-tile-box user-word">
       {currWordTiles.map((tileId: string) => {
-        const tile: Tile = allTiles[tileId];
+        const tile = allTiles.get(tileId);
+        if (!tile) return null;
         return (
           <TileComponent
             type={tile.type}
@@ -45,7 +47,7 @@ const UserStand = ({
     <p>{error}</p>
 
     <div className="user-stand-tile-box user-tiles">
-      {Object.values(allTiles).map((tile: Tile) => (
+      {deckTiles.map((tile: Tile) => (
         <TileComponent
           type={tile.type}
           value={tile.value}
