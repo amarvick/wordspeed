@@ -2,11 +2,10 @@ import React, { ReactElement } from 'react';
 
 import TileComponent from './TileComponent.tsx';
 import './FlippedTiles.css';
-import LinkedList from './utils/classes/LinkedList';
 import { Tile } from './utils/types/Tile';
 
 type FlippedTilesProps = {
-  tiles: LinkedList;
+  tiles: Tile[];
 };
 
 const FlippedTiles = ({ tiles }: FlippedTilesProps): ReactElement => (

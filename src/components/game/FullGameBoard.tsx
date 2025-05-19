@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState, useMemo } from 'react';
 import FlippedTiles from './FlippedTiles.tsx';
 import {
   StickyNote as TimerComponent,
@@ -33,15 +33,18 @@ const FullGameBoard = ({
     onSwap,
   } = useGameLogic();
 
+  const flippedTileCount = useMemo(() => flippedTiles.length, [flippedTiles]);
+  const deckTileCount = useMemo(() => deckTiles.length, [deckTiles]);
+
   useEffect(() => {
-    if (!gameInProgress || (!flippedTiles.listSize && !deckTiles.listSize)) {
+    if (!gameInProgress || (flippedTileCount === 0 && deckTileCount === 0)) {
       setHighScores(score);
     }
-  }, [gameInProgress, flippedTiles, deckTiles, score]);
+  }, [gameInProgress, flippedTileCount, deckTileCount, score]);
 
   const getMessage = (): string => {
     if (!gameInProgress) return 'GAME OVER';
-    if (!flippedTiles.listSize && !deckTiles.listSize) return 'BOARD COMPLETED';
+    if (flippedTileCount === 0 && deckTileCount === 0) return 'BOARD COMPLETED';
     return '';
   };
 
@@ -56,7 +59,7 @@ const FullGameBoard = ({
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [gameInProgress, remainingTime]);
+  }, [gameInProgress, remainingTime, setRemainingTime]);
 
   useEffect(() => {
     if (remainingTime <= 0) {
@@ -64,7 +67,7 @@ const FullGameBoard = ({
     }
   }, [remainingTime]);
 
-  return gameInProgress && (flippedTiles.listSize || deckTiles.listSize) ? (
+  return gameInProgress && (flippedTileCount > 0 || deckTileCount > 0) ? (
     <div
       className="FullGameBoard"
       tabIndex={0}
@@ -75,11 +78,12 @@ const FullGameBoard = ({
       <UserStand
         currWordTiles={currWordTiles}
         allTiles={allTiles}
+        deckTiles={deckTiles}
         removeTile={(tileId) => toggleTile(tileId)}
         toggleTile={toggleTile}
         submitWord={submitWord}
         onSwap={onSwap}
-        remainingTiles={flippedTiles.listSize}
+        remainingTiles={flippedTileCount}
         error={error}
       />
       <ScoreComponent header="Score" text={score.toString()} />
