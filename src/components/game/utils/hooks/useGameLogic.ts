@@ -13,8 +13,8 @@ export type GameLogic = {
   currWordTiles: string[];
   deckTiles: Tile[];
   allTiles: Map<string, Tile>;
-  onKeyUp: (key: string) => void;
-  toggleTile: (tileId: string) => void;
+  onKeyUp: (_key: string) => void;
+  toggleTile: (_tileId: string) => void;
   submitWord: () => void;
   onSwap: () => void;
 };
@@ -89,7 +89,7 @@ export const useGameLogic = (): GameLogic => {
       .map((tile) => allTiles.get(tile)?.value)
       .join('');
 
-    if (word.length < 2) {
+    if (word.length <= 2) {
       setError(ERR_NEEDS_MORE_CHARS);
     } else if (wordBank.has(word)) {
       acceptWord();

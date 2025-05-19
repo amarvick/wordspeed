@@ -48,6 +48,7 @@ const Instructions = ({
           and clicking the &quot;swap tiles&quot; button.
         </p>
         <img src={SwapTilesImg} alt="Instructions on swapping tiles" />
+        <br />
         <Button
           text="Back to Menu"
           onClick={() => setDisplayedScreen(MAIN_MENU)}
